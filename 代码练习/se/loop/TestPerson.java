@@ -1,4 +1,4 @@
-package com.java.se;
+package com.java.se.loop;
 
 import java.util.Scanner;
 
