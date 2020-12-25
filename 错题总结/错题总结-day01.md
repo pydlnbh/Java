@@ -4,11 +4,11 @@
 
 2. Java的跨平台原理，和C语言跨平台原理的不同之处？
 
--        <img src="C:\Users\user\Desktop\错题总结\images\java和C跨平台原理.png" alt="java和C跨平台原理" style="zoom: 80%;" />
+-         <img src="java和C跨平台原理.png" alt="java和C跨平台原理" style="zoom: 80%;" />
 
 3. 什么是JVM？什么是JDK？ 什么是JRE？
 
--     <img src="C:\Users\user\Desktop\错题总结\images\Java.png" alt="Java" style="zoom:50%;" />
+-      <img src="Java.png" alt="Java" style="zoom: 50%;" />
 
 4. Java的优点？
 
