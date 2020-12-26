@@ -1,12 +1,12 @@
 1. 五个常见运行时异常(RuntimeException)?
-
-- ClassCastException(类准换异常)
-- IndexOutOfBoundsException(数组越界)
-- NullPointerException(空指针)
-- ArrayStoreException(数据存储异常, 操作数组类型不一致时)
-- IllegalArgumentException(非法参数异常)
+   - ClassCastException(类准换异常)
+   - IndexOutOfBoundsException(数组越界)
+   - NullPointerException(空指针)
+   - ArrayStoreException(数据存储异常, 操作数组类型不一致时)
+   - IllegalArgumentException(非法参数异常)
 
 2. Java提供了两种异常机制。一种是运行时异常(RuntimeExepction)，一种是检查式异常(checked execption)
+
 3. throw和throws的区别?
 
 - throw是语句抛出的一个异常
@@ -134,7 +134,7 @@ while (iterator1.hasPrevious()) {
 21. Hash表的原理?
     
 - 一组数字,对应的hash算法产生的hashcode然后模上数组的长度, 把对应的值放在取的模位置上
-    
+  
 22. ```java
     // 迭代器对象
     Iterator iterator = set.iterator(); // iterator的作用域对象是从定义了这个迭代器开始直到方法体结束, 如果后面一直有代码, 这个对象永远都不会回收

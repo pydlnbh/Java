@@ -8,7 +8,7 @@
    - `super`可以用来调用直接父类方法。super.方法名
    - `super()`可以用于调用直接父类构造函数。super()
    - 如果没有使用`super()`或`this()`，则`super()`在每个类构造函数中由编译器自动添加。
-   -     ![super关键字](images/super关键字.png)
+ ![super关键字](images/super关键字.png)
 7. 父类的静态方法子类可以调用，但是子类不能重写
 8. 科学技术法:En表示10的n次方
 9. private, static, fianl修饰的是编译时绑定，静态绑定；其它都是动态绑定，运行时绑定
@@ -34,7 +34,7 @@
 29. 使用数组步骤：声明数组，给定大小，赋值(如果不是最初直接赋值，不给定大小，需要根据下标一个一个赋值]，数组操作；数组定义的时候必须给定大小，且大小不可改变，比如：int[] i = new int[4];数组没有add和remove方法，因为数组长度是固定的，不能增加和减少
 30. StringBuffer线程安全，效率低，StringBuilder线程不安全，效率高
 31. Collection接口有两个继承类List是有序的，Set是无序的。
-32.     <img src="images/Collection接口.png" alt="Collection接口"  />
+ <img src="images/Collection接口.png" alt="Collection接口"  />
 33. List类有三个实现类ArrayList,LinkedList,Vector,ArrayList是数组方式存储的，线程不安全的，LinkedLists是链表形式存储的，vector也是数组存储的，线程安全的，ArrayList进行扩容时是1.5倍，vector进行扩容时时2倍
 34. Set类中有两个实现类HashSet和TreeSet，HashSet是使用哈希表存储的，无序的；TreeSet是采用红黑树存储的，有序的
 35. 带有泛型的类或方法时第一次声明是占位符的作用，第二次继承或引用时是具体的类型
@@ -42,4 +42,3 @@
 37. Collections是集合的操作类，Collection是集合接口，两者不一样
 38. Map接口有HashMap实现类和TreeMap两个实现类，HashMap是无序的，HashMap的Key是唯一的（Set）和Value是不唯一的，TreeMap是有序的，HashMap下面有个实现类是LinkedHashMap是有序的
 39. HashMap在JDK1.7是数组+链表存储的，在1.8中是数组、链表+红黑树存储的
-
