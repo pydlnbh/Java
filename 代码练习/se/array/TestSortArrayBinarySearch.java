@@ -1,7 +1,5 @@
 package com.java.se.array;
 
-import java.util.Scanner;
-
 /**
  * @Author: PeiYiDing
  * @Date: 2020/12/24
@@ -11,19 +9,17 @@ import java.util.Scanner;
 public class TestSortArrayBinarySearch {
 
     public static void main(String[] args) {
+        // 定义数组
+        int[] arr = {3, 1, 24, 3, 55, 6, 75, 88};
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Please input random range: ");
-        int inputValue = sc.nextInt();
-        int[] arr = new int[random(inputValue / 2)];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = random(inputValue);
-        }
-
+        // 打印数组
         printArray(arr);
+        // 排序数组
         insertSoft(arr);
+        // 打印排序好的数组
         printArray(arr);
-        binarySearch(arr, 12);
+        // 打印查找数的下标
+        System.out.println(binarySearch(arr, 0, arr.length - 1, 6));
     }
 
     public static void printArray(int[] arr) {
@@ -44,10 +40,6 @@ public class TestSortArrayBinarySearch {
         arr[b] = tmp;
     }
 
-    public static int random(int num) {
-        return (int) (Math.random() * num);
-    }
-
     public static void insertSoft(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
@@ -60,12 +52,22 @@ public class TestSortArrayBinarySearch {
         }
     }
 
-    public static int binarySearch(int[] arr, int num) {
-        if (num == -1) {
-            return 0;
+    // test 二分法查找不能查询无序的数组和重复的数值
+    public static int binarySearch(int[] arr, int front, int end, int findValue) {
+        if (arr == null) {
+            return -1;
         }
 
-//        return binarySearch(num);
-        return 0;
+        if (front <= end) {
+            int mid = (front + end) / 2;
+            if (findValue == arr[mid]) {
+                return mid;
+            } else if (findValue < arr[mid]) {
+                binarySearch(arr, front, mid - 1, findValue);
+            } else {
+                binarySearch(arr, mid + 1, end, findValue);
+            }
+        }
+        return -1;
     }
 }
