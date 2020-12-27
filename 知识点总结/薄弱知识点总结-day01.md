@@ -66,10 +66,16 @@
 
  <img src="images/Collection接口.png" alt="Collection接口"  />
 
-1. List类有三个实现类ArrayList, LinkedList, Vector; ArrayList是数组方式存储的，线程不安全的，LinkedList是链表形式存储的，vector也是数组存储的，线程安全的，ArrayList进行扩容时是1.5倍，vector进行扩容时是2倍
-2. Set类中有两个实现类HashSet和TreeSet，HashSet是使用哈希表存储的，无序的；TreeSet是采用红黑树存储的，有序的
-3. 带有泛型的类或方法时第一次声明是占位符的作用，第二次继承或引用时是具体的类型
-4. 进程作为资源分配的单位，线程作为调度和执行的单位
-5. Collections是集合的操作类，Collection是集合接口，两者不一样
-6. Map接口有HashMap实现类和TreeMap两个实现类，HashMap是无序的，HashMap的Key是唯一的（Set一样的性质）, Value是不唯一的; TreeMap是有序的，HashMap下面有个实现类是LinkedHashMap是有序的
-7. HashMap在JDK1.7是数组+链表存储的，在1.8中是数组、链表+红黑树存储的
+31. List类有三个实现类ArrayList, LinkedList, Vector; ArrayList是数组方式存储的，线程不安全的，LinkedList是链表形式存储的，vector也是数组存储的，线程安全的，ArrayList进行扩容时是1.5倍，vector进行扩容时是2倍
+
+32. Set类中有两个实现类HashSet和TreeSet，HashSet是使用哈希表存储的，无序的；TreeSet是采用红黑树存储的，有序的
+
+33. 带有泛型的类或方法时第一次声明是占位符的作用，第二次继承或引用时是具体的类型
+
+34. 进程作为资源分配的单位，线程作为调度和执行的单位
+
+35. Collections是集合的操作类，Collection是集合接口，两者不一样
+
+36. Map接口有HashMap实现类和TreeMap两个实现类，HashMap是无序的，HashMap的Key是唯一的（Set一样的性质）, Value是不唯一的; TreeMap是有序的，HashMap下面有个实现类是LinkedHashMap是有序的
+
+37. HashMap在JDK1.7是数组+链表存储的，在1.8中是数组、链表+红黑树存储的
