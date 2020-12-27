@@ -12,7 +12,7 @@
 
 4. Java的优点？
 
-- 跨平台，简单的，安全的，完全面向对象的，健壮的
+- 跨平台，简单的，安全的，健壮的, 完全面向对象的
 
 5. 注释有什么作用?
 
@@ -20,7 +20,7 @@
 
 6. Java语言的执行过程？
 
-- 编写好的.java文件    通过javac命令编译成class字节码文件    在JVM虚拟机中运行
+- 编写好的.java文件, 通过javac命令编译成class字节码文件, 然后使用java命令解释执行在JVM虚拟机中
 
 7. 环境变量path和classpath的作用？
 
@@ -42,7 +42,7 @@
     float f2 = (float)1.12; // correct
     double d1 = 3.1E1; // correct 科学计数法表示
     double d2 = 32.1D; // correct 可以带后缀d或D表示double类型
-    总结：float需要带上f/F后缀, 不能使用科学计数法，double比较随意，可以直接赋值，也可以使用科学计数法，也可以使用D/d后缀
+    // 总结：float需要带上f/F后缀, 不能使用科学计数法，double比较随意，可以直接赋值，也可以使用科学计数法，也可以使用D/d后缀
     ```
 
 11. 三目运算符又叫条件运算符，除了赋值符以外优先级最低
@@ -51,27 +51,25 @@
     public static short method(byte x, double y) {
         return (short) x / y * 2;	// error 只是限制类型转换了x,没有转换全部
     }
-    
     public static short method(byte x, double y) {
         return (short) ((short)x / y * 2);	// correct
     }
-    
     public static double method1(byte x, double y) {
         return (short) x / y * 2;	// correct
     }
     ```
-
+    
 13. ```java
-    short s1 = 1; // correct
+    short s1 = 1; // correct 编译器直到1在2个字节范围内, 合法范围, 所以可以顺利赋值
     s1 = s1 + 1; // error 不兼容的类型: 从int转换到short可能会有损失
-    s1 += 1; // correct “+=”这个运算符在Java中是一个运算符，而不是两个，程序在执行“+=”时，会自动向高精度进行数据类型转换
+    s1 += 1; // correct "+="这个运算符在Java中是一个运算符，而不是两个，程序在执行"+="时，会自动向高精度进行数据类型转换
     ```
 
 14. 浮点型常量默认是double 类型的
 
 15. Java语言中不同数据类型的长度是固定的，不随机器硬件不同而改变
 
-16. switch只能支持byte, short, chra, int, 1.7之后加入String
+16. Switch只能支持byte, short, chra, int, 1.7之后加入String
 
 17. 随机生成[30, 60]的语句`(int)(Math.random() * 31) + 30`
 
@@ -89,9 +87,9 @@
     do {
         --c;
         a = a - 1;
-       
     } while (a > 0);
-    System.out.println("a = " + a + ", b = " + b); // dowhile在这执行了一次才跳出循环的，光想着跳出循环了，没想到打印在外面
+    System.out.println("a = " + a + ", b = " + b); 
+    // dowhile在这执行了一次才跳出循环的，光想着跳出循环了，没想到打印在外面
     ```
 
 21. ```java
@@ -103,4 +101,4 @@
     }
     ```
 
-22. switch多分枝判断100以内分数的等级，判断条件可以分数除以10就变成5个case了
+22. Switch多分枝判断100以内分数的等级，判断条件可以分数除以10就变成5个case了
