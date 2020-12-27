@@ -15,8 +15,9 @@ public class GenericMethod<E> {
         this.e = e;
     }
 
-    public <M> void test(M m) {
+    public <M> M test(M m) {
         System.out.println(m);
         System.out.println(e);
+        return m;
     }
 }
