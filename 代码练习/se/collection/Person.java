@@ -1,5 +1,6 @@
 package com.java.se.collection;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -7,11 +8,14 @@ import java.util.Objects;
  * @Date: 2020/12/26
  * @Description: com.java.se.collection
  */
-public class Person implements Comparable {
+public class Person implements Comparable, Serializable {
+
+    // ID
+    long serialVersionUID = 670L;
 
     // private variable
     private String name;
-    private int age;
+    transient private int age;
 
     public Person() {
     }
