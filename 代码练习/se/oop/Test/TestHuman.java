@@ -18,7 +18,7 @@ public class TestHuman {
         System.out.println("============================");
 
         // sportsman
-        Sportsman sportsman = new Sportsman("lx", 23, "male", "200 miles run", "22 seconds");
+        Sportsman sportsman = new Sportsman("lx", 23, "male", "200 miles Run", "22 seconds");
         sportsman.showMe();
 
         System.out.println("============================");

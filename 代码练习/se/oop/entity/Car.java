@@ -35,7 +35,7 @@ public class Car {
     }
 
     public void run() {
-        System.out.println("run...");
+        System.out.println("Run...");
     }
 
     public void stop() {

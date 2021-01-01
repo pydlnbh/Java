@@ -12,5 +12,10 @@ public class TestBook {
     public static void main(String[] args) {
         Book book = new Book("breaking bad", "James", "U.S", 100);
         book.introduced();
+
+        String str = "123";
+        Integer i = new Integer(str);
+        Integer i1 = 1234;
+        String str1= i1.toString();
     }
 }

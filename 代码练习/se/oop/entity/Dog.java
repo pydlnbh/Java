@@ -66,7 +66,7 @@ public class Dog {
 
     public void run() {
         if (flag) {
-            System.out.println("run...");
+            System.out.println("Run...");
         } else {
             System.out.println("stay...");
         }
