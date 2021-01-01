@@ -43,7 +43,7 @@ public static Integer valueOf(int i) {
      - 字符串转换为包装类
 
        - ```java
-         Integer i1 = Integer(String s);		    // 第一种方式
+         Integer i1 = new Integer(String s);		    // 第一种方式
          int i2 = Integer.parseInt(String s);    // 第二种方式
          Integer i3 = Integer.valueOf(String s); // 第三种方式
          ```
