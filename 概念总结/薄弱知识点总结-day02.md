@@ -1,5 +1,5 @@
 1. 五个常见运行时异常(RuntimeException)?
-   - ClassCastException(类准换异常)
+   - ClassCastException(类转换异常)
    - IndexOutOfBoundsException(数组越界)
    - NullPointerException(空指针)
    - ArrayStoreException(数据存储异常, 操作数组类型不一致时)
