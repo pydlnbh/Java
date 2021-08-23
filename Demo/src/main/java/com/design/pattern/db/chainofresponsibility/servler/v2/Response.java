@@ -1,0 +1,17 @@
+package com.design.pattern.db.chainofresponsibility.servler.v2;
+
+public class Response {
+    String str;
+
+    public String getStr() {
+        return str;
+    }
+
+    public void setStr(String str) {
+        this.str = str;
+    }
+
+    public String toString() {
+        return "Str -->>" + str;
+    }
+}
