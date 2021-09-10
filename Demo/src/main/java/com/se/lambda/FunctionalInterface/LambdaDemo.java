@@ -1,4 +1,4 @@
-package com.se.lambda;
+package com.se.lambda.FunctionalInterface;
 
 import java.util.Arrays;
 import java.util.Collections;

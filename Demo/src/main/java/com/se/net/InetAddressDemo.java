@@ -16,7 +16,7 @@ public class InetAddressDemo {
             System.out.println(localHost);
 
             // 给定主机名, 确定主机的IP地址
-            InetAddress byName = InetAddress.getByName("www.bilibili.com");
+            InetAddress byName = InetAddress.getByName("www.baidu.com");
             System.out.println(byName);
 
             // 以文本形式返回IP地址字符串
