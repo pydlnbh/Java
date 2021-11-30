@@ -47,7 +47,90 @@ public class Solution004 {
         return pre;
     }
 
+    /**
+     * 反转单链表练习
+     *
+     * @param head
+     * @return Node
+     */
+    Node practice002(Node head) {
+        Node pre = null;
+        Node next = null;
+
+        while (head != null) {
+            next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+        }
+
+        return pre;
+    }
+
     public static DoubleNode reverseDoubleList(DoubleNode head) {
+        DoubleNode pre = null;
+        DoubleNode next = null;
+
+        while (head != null) {
+            next = head.next;
+            head.next = pre;
+            head.pre = next;
+            pre = head;
+            head = next;
+        }
+
+        return pre;
+    }
+
+    /**
+     * 反转双向链表练习
+     *
+     * @param head
+     * @return DoubleNode
+     */
+    DoubleNode practice001(DoubleNode head) {
+        DoubleNode pre = null;
+        DoubleNode next = null;
+
+        while (head != null) {
+            next = head.next;
+            head.next = pre;
+            head.pre = next;
+            pre = head;
+            head = next;
+        }
+
+        return pre;
+    }
+
+    /**
+     * 反转双向链表练习002
+     *
+     * @param head
+     * @return DoubleNode
+     */
+    DoubleNode practice002(DoubleNode head) {
+        DoubleNode pre = null;
+        DoubleNode next = null;
+
+        while (head != null) {
+            next = head.next;
+            head.next = pre;
+            head.pre = next;
+            pre = head;
+            head = next;
+        }
+
+        return pre;
+    }
+
+    /**
+     * 反转双向链表003
+     *
+     * @param head
+     * @return DoubleNode
+     */
+    DoubleNode practice003(DoubleNode head) {
         DoubleNode pre = null;
         DoubleNode next = null;
 
@@ -81,6 +164,66 @@ public class Solution004 {
                 pre = cur;
             }
 
+            cur = cur.next;
+        }
+
+        return head;
+    }
+
+    /**
+     * 删除单链表中的一个数字练习001
+     *
+     * @param head
+     * @param num
+     * @return Node
+     */
+    public static Node removeValuePractice001(Node head, int num) {
+        while (head != null) {
+            if (head.value != num) {
+                break;
+            }
+            head = head.next;
+        }
+
+        Node pre = head;
+        Node cur = head;
+
+        while (cur != null) {
+            if (cur.value == num) {
+                pre.next = cur.next;
+            } else {
+                pre = cur;
+            }
+            cur = cur.next;
+        }
+
+        return head;
+    }
+
+    /**
+     * 删除单链表中的一个数字练习002
+     *
+     * @param head
+     * @param num
+     * @return Node
+     */
+    public static Node removeValuePractice002(Node head, int num) {
+        while (head != null) {
+            if (head.value != num) {
+                break;
+            }
+            head = head.next;
+        }
+
+        Node pre = head;
+        Node cur = head;
+
+        while (cur != null) {
+            if (cur.value == num) {
+                pre.next = cur.next;
+            } else {
+                pre = cur;
+            }
             cur = cur.next;
         }
 
