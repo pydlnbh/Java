@@ -69,7 +69,7 @@
 
 15. Java语言中不同数据类型的长度是固定的，不随机器硬件不同而改变
 
-16. Switch只能支持byte, short, chra, int, 1.7之后加入String
+16. Switch只能支持byte, short, char, int, 1.7之后加入String
 
 17. 随机生成[30, 60]的语句`(int)(Math.random() * 31) + 30`
 
