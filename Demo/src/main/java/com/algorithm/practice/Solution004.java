@@ -229,6 +229,26 @@ public class Solution004 {
 
         return head;
     }
+
+    public static Node01 removeValue001(Node01 head, int num) {
+        while (head != null) {
+            if (head.value != num) {
+                break;
+            }
+            head = head.next;
+        }
+        Node01 pre = head;
+        Node01 cur = head;
+        while (cur != null) {
+            if (cur.value == num) {
+                pre.next = cur.next;
+            } else {
+                pre = cur;
+            }
+            cur = cur.next;
+        }
+        return head;
+    }
 }
 
 class Node {
@@ -246,6 +266,15 @@ class DoubleNode {
     public DoubleNode next;
 
     public DoubleNode(int value) {
+        this.value = value;
+    }
+}
+
+class Node01 {
+    public int value;
+    public Node01 next;
+
+    public Node01(int value) {
         this.value = value;
     }
 }

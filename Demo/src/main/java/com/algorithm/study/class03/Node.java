@@ -3,6 +3,7 @@ package com.algorithm.study.class03;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -101,7 +102,7 @@ public class Node {
     }
 
     public static void main(String[] args) {
-        Node node = genRanLinkedList(5, 4);
+        Node node = genRanLinkedList(10, 4);
         printList(node);
 
         Node node1 = removeValue(node, 4);
