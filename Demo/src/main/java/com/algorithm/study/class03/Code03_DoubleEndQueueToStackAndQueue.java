@@ -1,12 +1,12 @@
 package com.algorithm.study.class03;
 
-import java.sql.SQLOutput;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Queue;
 import java.util.Stack;
 
 /**
- * 双向链表实现栈
+ * 双向链表实现栈和队列
  */
 public class Code03_DoubleEndQueueToStackAndQueue {
 
@@ -37,10 +37,9 @@ public class Code03_DoubleEndQueueToStackAndQueue {
         /**
          * 从头部添加
          *
-         * @param value
          */
         public void addFromHead(T value) {
-            Node<T> cur = new Node<T>(value);
+            Node<T> cur = new Node<>(value);
             if (head == null) {
                 head = cur;
                 tail = cur;
@@ -53,25 +52,20 @@ public class Code03_DoubleEndQueueToStackAndQueue {
 
         /**
          * 从尾部添加
-         *
-         * @param value
          */
         public void addFromBottom(T value) {
-            Node<T> cur = new Node<T>(value);
+            Node<T> cur = new Node<>(value);
             if (head == null) {
                 head = cur;
-                tail = cur;
             } else {
                 cur.last = tail;
                 tail.next = cur;
-                tail = cur;
             }
+            tail = cur;
         }
 
         /**
          * 从头部弹出
-         *
-         * @return
          */
         public T popFromHead() {
             if (head == null) {
@@ -91,8 +85,6 @@ public class Code03_DoubleEndQueueToStackAndQueue {
 
         /**
          * 从尾部弹出
-         *
-         * @return
          */
         public T popFromBottom() {
             if (head == null) {
@@ -113,7 +105,6 @@ public class Code03_DoubleEndQueueToStackAndQueue {
         /**
          * 是否为空
          *
-         * @return
          */
         public boolean isEmpty() {
             return head == null;
@@ -129,7 +120,7 @@ public class Code03_DoubleEndQueueToStackAndQueue {
         private DoubleEndsQueue<T> queue;
 
         public MyStack() {
-            queue = new DoubleEndsQueue<T>();
+            queue = new DoubleEndsQueue<>();
         }
 
         public void push(T value) {
@@ -154,7 +145,7 @@ public class Code03_DoubleEndQueueToStackAndQueue {
         private DoubleEndsQueue<T> queue;
 
         public MyQueue() {
-            queue = new DoubleEndsQueue<T>();
+            queue = new DoubleEndsQueue<>();
         }
 
         public void push(T value) {
@@ -187,7 +178,7 @@ public class Code03_DoubleEndQueueToStackAndQueue {
         if (o1 == null && o2 == null) {
             return true;
         }
-        return o1.equals(o2);
+        return Objects.equals(o1, o2);
     }
 
     public static void main(String[] args) {
@@ -232,6 +223,6 @@ public class Code03_DoubleEndQueueToStackAndQueue {
                 }
             }
         }
-        System.out.println("finsh!");
+        System.out.println("finish!");
     }
 }
