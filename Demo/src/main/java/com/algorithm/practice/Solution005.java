@@ -41,14 +41,48 @@ public class Solution005 {
         }
     }
 
+    public static class PreSum03 {
+
+        private int[] arr;
+
+        public PreSum03(int[] arr) {
+            this.arr = arr;
+        }
+
+        public int rangeSum02(int left, int right) {
+            int res = 0;
+            for (int i = left; i <= right; i++) {
+                res += arr[i];
+            }
+            return res;
+        }
+    }
+
+    public static class PreSum04 {
+
+        private int[] arr;
+
+        public PreSum04(int[] arr) {
+            this.arr = new int[arr.length];
+            this.arr[0] = arr[0];
+            for (int i = 1; i < arr.length; i++) {
+                this.arr[i] = this.arr[i - 1] + arr[i];
+            }
+        }
+
+        public int range04(int left, int right) {
+            return left == 0 ? arr[right] : arr[right] - arr[left - 1];
+        }
+    }
+
     public static void main(String[] args) {
         int[] arr = {4, 2, 8, 12, 52, 1};
-        PreSum01 preSum01 = new PreSum01(arr);
-        int sum01 = preSum01.rangeSum01(2, 4);
+        PreSum03 preSum03 = new PreSum03(arr);
+        int sum01 = preSum03.rangeSum02(2, 4);
         System.out.println(sum01);
 
-        PreSum02 preSum02 = new PreSum02(arr);
-        int sum02 = preSum02.rangeSum(2, 4);
+        PreSum04 preSum02 = new PreSum04(arr);
+        int sum02 = preSum02.range04(2, 4);
         System.out.println(sum02);
     }
 }
