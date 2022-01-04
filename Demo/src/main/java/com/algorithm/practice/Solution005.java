@@ -75,14 +75,78 @@ public class Solution005 {
         }
     }
 
+    public static class PreSum06 {
+        private int[] arr;
+
+        public PreSum06(int[] arr) {
+            this.arr = arr;
+        }
+
+        public int rangeSum(int left, int right) {
+            int res = 0;
+            for (int i = left; i <= right; i++) {
+                res += arr[i];
+            }
+            return res;
+        }
+    }
+
+    public static class PreSum07 {
+        private int[] arr;
+
+        public PreSum07(int[] arr) {
+            this.arr = new int[arr.length];
+            this.arr[0] = arr[0];
+            for (int i = 1; i < arr.length; i++) {
+                this.arr[i] = this.arr[i - 1] + arr[i];
+            }
+        }
+
+        public int rangeSum(int left, int right) {
+            return left == 0 ? arr[right] : arr[right] - arr[left - 1];
+        }
+    }
+
+    public static class PreSum08 {
+        private int[] arr;
+
+        public PreSum08(int[] arr) {
+            this.arr = arr;
+        }
+
+        public int rangeSum(int left, int right) {
+            int res = 0;
+            for (int i = left; i <= right; i++) {
+                res += arr[i];
+            }
+            return res;
+        }
+    }
+
+    public static class PreSum09 {
+        private int[] arr;
+
+        public PreSum09(int[] arr) {
+            this.arr = new int[arr.length];
+            this.arr[0] = arr[0];
+            for (int i = 1; i < arr.length; i++) {
+                this.arr[i] = this.arr[i - 1] + arr[i];
+            }
+        }
+
+        public int rangeSum(int left, int right) {
+            return left == 0 ? arr[right] : arr[right] - arr[left - 1];
+        }
+    }
+
     public static void main(String[] args) {
         int[] arr = {4, 2, 8, 12, 52, 1};
-        PreSum03 preSum03 = new PreSum03(arr);
-        int sum01 = preSum03.rangeSum02(2, 4);
+        PreSum08 preSum01 = new PreSum08(arr);
+        int sum01 = preSum01.rangeSum(2, 4);
         System.out.println(sum01);
 
-        PreSum04 preSum02 = new PreSum04(arr);
-        int sum02 = preSum02.range04(2, 4);
+        PreSum09 preSum02 = new PreSum09(arr);
+        int sum02 = preSum02.rangeSum(2, 4);
         System.out.println(sum02);
     }
 }
