@@ -15,7 +15,7 @@ import java.util.TimeZone;
 /**
  * 小写y和大写Y对比
  */
-public class SimpleDateFormatTest {
+public class SimpleDateFormatDemo {
 
     public static void main(String[] args) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

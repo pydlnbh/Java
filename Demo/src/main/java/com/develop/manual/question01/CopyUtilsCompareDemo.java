@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * 拷贝工具类效率比较
  */
-public class CopyUtilsCompare {
+public class CopyUtilsCompareDemo {
     public void hutoolTest(PersonDO personDO, int testTimes) {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
@@ -99,6 +99,6 @@ public class CopyUtilsCompare {
     }
 
     public static void main(String[] args) {
-        new CopyUtilsCompare().beginTest();
+        new CopyUtilsCompareDemo().beginTest();
     }
 }

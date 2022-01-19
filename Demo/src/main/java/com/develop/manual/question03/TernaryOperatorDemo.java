@@ -5,7 +5,7 @@ import cn.hutool.core.collection.CollUtil;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TernaryOperatorTest {
+public class TernaryOperatorDemo {
 
     public static void main(String[] args) {
         Integer a = 1;
