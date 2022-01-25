@@ -190,6 +190,8 @@ public class Solution007 {
     /**
      * 等概率返回 0 ~ 7
      *
+     * 8    4   2   1
+     *
      * @return int
      */
     public static int f2() {
