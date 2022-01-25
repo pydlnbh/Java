@@ -139,13 +139,45 @@ public class Solution005 {
         }
     }
 
+    public static class PreSum10 {
+        private int[] arr;
+
+        public PreSum10(int[] arr) {
+            this.arr = arr;
+        }
+
+        public int rangeSum(int left, int right) {
+            int sum = 0;
+            for (int i = left; i <= right; i++) {
+                sum += arr[i];
+            }
+            return sum;
+        }
+    }
+
+    public static class PreSum11 {
+        private int[] arr;
+
+        public PreSum11(int[] arr) {
+            this.arr = new int[arr.length];
+            this.arr[0] = arr[0];
+            for (int i = 1; i < arr.length; i++) {
+                this.arr[i] = this.arr[i - 1] + arr[i];
+            }
+        }
+
+        public int rangeSum(int left, int right) {
+            return left == 0 ? arr[right] : arr[right] - arr[left - 1];
+        }
+    }
+
     public static void main(String[] args) {
         int[] arr = {4, 2, 8, 12, 52, 1};
-        PreSum08 preSum01 = new PreSum08(arr);
+        PreSum10 preSum01 = new PreSum10(arr);
         int sum01 = preSum01.rangeSum(2, 4);
         System.out.println(sum01);
 
-        PreSum09 preSum02 = new PreSum09(arr);
+        PreSum11 preSum02 = new PreSum11(arr);
         int sum02 = preSum02.rangeSum(2, 4);
         System.out.println(sum02);
     }
