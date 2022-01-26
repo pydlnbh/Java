@@ -189,7 +189,7 @@ public class Solution010 {
         int maxSize = 1000;
         int maxValue = 6666;
         int testTimes = 10000;
-        boolean flag = true;
+        boolean succeed = true;
 
         // 开始测试
         for (int i = 0; i < testTimes; i++) {
@@ -210,13 +210,13 @@ public class Solution010 {
                 // 打印数组
                 printArray(printArr, arr, copyArr);
                 // 赋值
-                flag = false;
+                succeed = false;
                 // 结束循环
                 break;
             }
         }
 
         // 打印测试结果
-        System.out.println(flag ? "yes" : "no");
+        System.out.println(succeed ? "yes" : "no");
     }
 }
