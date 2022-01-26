@@ -8,10 +8,12 @@ package com.algorithm.primary.class01;
 public class Code02_SumOfFactorial {
 
     public static void main(String[] args) {
-        int num = 10;
+        int num = 3;
         long f1 = f1(num);
         long f2 = f2(num);
+        long f3 = factorialPractice(num);
         System.out.println("f1 = " + f1 + ", f2 = " + f2);
+        System.out.println(f3);
     }
 
     public static long f1(int n) {
@@ -34,9 +36,24 @@ public class Code02_SumOfFactorial {
         long ans = 0;
         long cur = 1;
         for (int i = 1; i <= n; i++) {
-            cur = cur * i;
+            cur *= i;
             ans += cur;
         }
         return ans;
+    }
+
+    /**
+     * num阶乘之和
+     * @param num 数值
+     * @return int
+     */
+    public static int factorialPractice(int num) {
+        int res = 0;
+        int cur = 1;
+        for (int i = 1; i <= num; i++) {
+            cur *= i;
+            res += cur;
+        }
+        return res;
     }
 }
