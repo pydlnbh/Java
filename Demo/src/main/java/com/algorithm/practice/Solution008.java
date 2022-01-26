@@ -1,7 +1,9 @@
 package com.algorithm.practice;
 
 /**
- * 一个函数等概率返回 3 ~ 19, 变形为等概率返回 17 ~ 56
+ * 从a-b随机到c-d随机
+ *
+ * 例: 一个函数等概率返回 3 ~ 19, 变形为等概率返回 17 ~ 56
  */
 public class Solution008 {
 
