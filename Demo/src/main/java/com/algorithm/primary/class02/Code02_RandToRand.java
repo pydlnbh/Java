@@ -228,5 +228,16 @@ public class Code02_RandToRand {
         for (int i = 0; i < 8; i++) {
             System.out.println(i + "这个数, 出现了" + counts[i] + "次");
         }
+
+        System.out.println("===================================");
+
+        counts = new int[2];
+        for (int i = 0; i < testTimes; i++) {
+            int num = y();
+            counts[num]++;
+        }
+        for (int i = 0; i < 2; i++) {
+            System.out.println(i + "这个数, 出现了" + counts[i] + "次");
+        }
     }
 }
