@@ -1,8 +1,5 @@
 package com.algorithm.practice;
 
-import com.sun.jndi.ldap.Ber;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -53,13 +50,10 @@ public class Solution011 {
         for (int i = 0; i < arr.length; i++) {
             // 定义最小下标
             int minIndex = i;
-            // 循环遍历
-            for (int j = 0; j <= i; j++) {
-                // 判断赋值
-                minIndex = arr[j] < arr[minIndex] ? j : minIndex;
+            for (int j = i + 1; j < arr.length; j++) {
+                minIndex = arr[j] > arr[minIndex] ? minIndex : j;
             }
-            // 交换
-            swap(arr, minIndex, i);
+            swap(arr, i, minIndex);
         }
     }
 
@@ -150,7 +144,7 @@ public class Solution011 {
             ans[i] = arr[i];
         }
         // 返回
-        return arr;
+        return ans;
     }
 
     /**
@@ -277,10 +271,10 @@ public class Solution011 {
     /**
      * 前缀和数组对数器测试
      *
-     * @param succeed 测试标识
+     * @param succeed   测试标识
      * @param testTimes 测试次数
      * @param maxLength 数组最大长度
-     * @param maxValue 数组最大数值
+     * @param maxValue  数组最大数值
      * @return boolean
      */
     private static boolean PreSumTest(boolean succeed, int testTimes, int maxLength, int maxValue) {
@@ -515,10 +509,10 @@ public class Solution011 {
     /**
      * 二分法对数器
      *
-     * @param succeed 成功标识
+     * @param succeed   成功标识
      * @param testTimes 测试次数
      * @param maxLength 最大长度
-     * @param maxValue 最大数值
+     * @param maxValue  最大数值
      * @return boolean
      */
     private static boolean binarySearchTest(boolean succeed, int testTimes, int maxLength, int maxValue) {
@@ -629,10 +623,10 @@ public class Solution011 {
     /**
      * 有序数组找>=num最左侧的位置
      *
-     * @param succeed 成功标志
+     * @param succeed   成功标志
      * @param testTimes 测试次数
      * @param maxLength 最大长度
-     * @param maxValue 最大值
+     * @param maxValue  最大值
      * @return boolean
      */
     private static boolean nearLeftIndexTest(boolean succeed, int testTimes, int maxLength, int maxValue) {
@@ -659,10 +653,10 @@ public class Solution011 {
     /**
      * 有序数组找<=num最右侧的位置
      *
-     * @param succeed 成功标志
+     * @param succeed   成功标志
      * @param testTimes 测试次数
      * @param maxLength 最大长度
-     * @param maxValue 最大值
+     * @param maxValue  最大值
      * @return boolean
      */
     private static boolean nearRightIndexTest(boolean succeed, int testTimes, int maxLength, int maxValue) {
@@ -690,7 +684,7 @@ public class Solution011 {
      * 生成一个相邻不相等的数组
      *
      * @param maxLength 最大长度
-     * @param maxValue 最大值
+     * @param maxValue  最大值
      * @return int[]
      */
     public static int[] generateNotEqualRandomArray(int maxLength, int maxValue) {
@@ -741,7 +735,7 @@ public class Solution011 {
                 // 如果mid大于右边, 左边不要
                 if (arr[mid] > arr[mid + 1]) {
                     left = mid + 1;
-                // 如果mid大于左边, 右边不要
+                    // 如果mid大于左边, 右边不要
                 } else {
                     right = mid - 1;
                 }
@@ -754,7 +748,7 @@ public class Solution011 {
     /**
      * 校验是否为局部最小
      *
-     * @param arr 数组
+     * @param arr      数组
      * @param minIndex 局部最小值下标
      * @return boolean
      */
@@ -769,10 +763,10 @@ public class Solution011 {
     /**
      * 局部最小下标对数器
      *
-     * @param succeed 成功标识
+     * @param succeed   成功标识
      * @param testTimes 测试次数
      * @param maxLength 最大长度
-     * @param maxValue 最大值
+     * @param maxValue  最大值
      * @return boolean
      */
     private static boolean getMinIndexTest(boolean succeed, int testTimes, int maxLength, int maxValue) {
@@ -807,8 +801,10 @@ public class Solution011 {
         int maxValue = 1000;
         // 打印int整型二进制
 //        printBinary(2);
+//        printBinary01(2);
         // 计算阶乘之和
 //        System.out.println(factorialSum(10));
+//        System.out.println(factorialSum01(10));
         // 排序对数器测试
 //        succeed = sortTest(succeed, testTimes, maxLength, maxValue);
         // 前缀和数组测试
@@ -824,8 +820,403 @@ public class Solution011 {
         // 二分查找<=某数最右侧的下标对数器
 //        succeed = nearRightIndexTest(succeed, testTimes, maxLength, maxValue);
         // 二分查找局部最小下标对数器
-        succeed = getMinIndexTest(succeed, testTimes, maxLength, maxValue);
+//        succeed = getMinIndexTest(succeed, testTimes, maxLength, maxValue);
         // 打印测试结果
-        System.out.print(succeed ? "测试成功" : "测试失败");
+        System.out.println(succeed ? "测试成功" : "测试失败");
+
+//        int[] arr = {12, 4, 2, 1, 4};
+//        selectionSort05(arr);
+//        printArray(arr);
+
+//        int sum = new preSum01(arr).rangeSum(2, 4);
+//        System.out.println(sum);
+
+//        randomTest();
+//        int flag = BSMiniNum(arr);
+//        System.out.println(flag);
+    }
+
+    /**
+     * 打印num二进制
+     *
+     * @param num 数字
+     */
+    public static void printBinary01(int num) {
+        String str = "";
+        for (int i = 31; i >= 0; i--) {
+            str += (num & (1 << i)) == 0 ? "0" : "1";
+        }
+        System.out.println(str);
+    }
+
+    /**
+     * 阶乘之和
+     *
+     * @param num 数字
+     */
+    public static int factorialSum01(int num) {
+        int ans = 0;
+        int sum = 1;
+        for (int i = 1; i <= num; i++) {
+            sum *= i;
+            ans += sum;
+        }
+        return ans;
+    }
+
+    /**
+     * 选择排序
+     *
+     * @param arr 数组
+     * @return int[]
+     */
+    public static void selectionSort01(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            int index = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                index = arr[j] > arr[index] ? index : j;
+            }
+            swap(arr, index, i);
+        }
+    }
+
+    public static void selectionSort02(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            int index = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[index]) {
+                    index = j;
+                }
+            }
+            swap(arr, i, index);
+        }
+    }
+
+    public static void selectionSort03(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            int index = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                index = arr[j] < arr[index] ? j : index;
+            }
+            swap(arr, i, index);
+        }
+    }
+
+    public static void selectionSort04(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            int index = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[index]) {
+                    index = j;
+                }
+            }
+            swap(arr, i, index);
+        }
+
+    }
+
+    public static void selectionSort05(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            int index = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[index]) {
+                    index = j;
+                }
+            }
+            swap(arr, i, index);
+        }
+    }
+
+    public static void bubbleSort01(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                }
+            }
+        }
+    }
+
+    /**
+     * 插入排序
+     *
+     * @param arr 数组
+     */
+    public static void insertionSort01(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                }
+            }
+        }
+    }
+
+    /**
+     * 前缀和
+     */
+    public static class preSum01 {
+        private int[] arr;
+
+        public preSum01(int[] arr) {
+            this.arr = new int[arr.length];
+            this.arr[0] = arr[0];
+            for (int i = 1; i < arr.length; i++) {
+                this.arr[i] = this.arr[i - 1] + arr[i];
+            }
+        }
+
+        public int rangeSum(int left, int right) {
+            return left == 0 ? arr[right] : arr[right] - arr[left - 1];
+        }
+    }
+
+    public static void randomTest() {
+//        int[] counts = new int[32];
+//        for (int i = 0; i < 10000000; i++) {
+//            counts[g()]++;
+//        }
+//        for (int j = 0; j < 32; j++) {
+//            System.out.println(j + "这个数出现了" + counts[j] + "次！");
+//        }
+
+        int[] counts = new int[2];
+        for (int i = 0; i < 10; i++) {
+            counts[f1()]++;
+        }
+        for (int j = 0; j < 2; j++) {
+            System.out.println(j + "这个数出现了" + counts[j] + "次！");
+        }
+
+        int[] countses = new int[2];
+        for (int i = 0; i < 10; i++) {
+            countses[g1()]++;
+        }
+        for (int j = 0; j < 2; j++) {
+            System.out.println(j + "这个数出现了" + countses[j] + "次！");
+        }
+    }
+
+    /**
+     * 给定 6 ~ 18 随机
+     * 返回 8 ~ 20 随机
+     */
+    public static int f() {
+        return (int) (Math.random() * 13) + 6;
+    }
+
+    public static int ff() {
+        int ans = 0;
+        do {
+            ans = f();
+        } while (ans == 12);
+        return ans < 12 ? 0 : 1;
+    }
+
+    public static int fff() {
+        return (ff() << 4) + (ff() << 3) + (ff() << 2) + (ff() << 1) + ff();
+    }
+
+    public static int ffff() {
+        int ans = 0;
+        do {
+            ans = fff();
+        } while (ans > 12);
+//        do {
+//            ans = fff();
+//        } while (ans > 20 || ans < 8);
+        return ans;
+    }
+
+    public static int g() {
+        return ffff() + 8;
+    }
+
+    /**
+     * 01不等概率随机 返回01等概率随机
+     */
+    public static int f1() {
+        return Math.random() < 0.23 ? 0 : 1;
+    }
+
+    public static int g1() {
+        int ans = 0;
+        do {
+            ans = f1();
+        } while (ans == f1());
+        return ans;
+    }
+
+    /**
+     * 二分查找
+     */
+    public static boolean BS01(int[] arr, int num) {
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (arr[mid] == num) {
+                return true;
+            } else if (arr[mid] > num) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * 有序数组中找到>=num最左侧的位置
+     *
+     * @param arr 有序数组
+     * @param num 数值
+     * @return int
+     */
+    public static int BSNearLeft01(int[] arr, int num) {
+        int index = -1;
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (arr[mid] >= num) {
+                right = mid - 1;
+                index = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return index;
+    }
+
+    /**
+     * 在有序数组中找到<=某数最右侧的位置
+     * @param arr 有序数组
+     * @param num 数值
+     * @return int
+     */
+    public static int BSNearRight01(int[] arr, int num) {
+        if (arr == null || arr.length == 0) {
+            return -1;
+        }
+
+        int index = -1;
+        int left = 0;
+        int right = arr.length - 1;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (arr[mid] <= num) {
+                left = mid + 1;
+                index = mid;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return index;
+    }
+
+    /**
+     * 在无序数组中找到局部最小值
+     *
+     * @param arr 数组
+     * @return int
+     */
+    public static int BSMininum(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return -1;
+        }
+        if (arr[0] < arr[1] || arr.length == 1) {
+            return 0;
+        }
+        if (arr[arr.length - 1] < arr[arr.length - 2]) {
+            return arr.length - 1;
+        }
+
+        int left = 0;
+        int right = arr.length - 1;
+        while (left < right - 1) {
+            int mid = (left + right) / 2;
+            if (arr[mid - 1] > arr[mid] && arr[mid + 1] > arr[mid]) {
+                break;
+            } else {
+                if (arr[mid] > arr[mid + 1]) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+        }
+
+        return arr[left] < arr[right] ? left : right;
+    }
+
+    /**
+     * 在无序数组中找到局部最小值
+     *
+     * @param arr 无序数组
+     * @return int
+     */
+    public static int BSMiniNum(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return -1;
+        }
+
+        if (arr[0] < arr[1] || arr.length == 1) {
+            return 0;
+        }
+
+        if (arr[arr.length - 1] < arr[arr.length - 2]) {
+            return arr.length;
+        }
+
+        int left = 0;
+        int right = arr.length - 1;
+        while (left < right - 1) {
+            int mid = (left + right) / 2;
+            if (arr[mid - 1] > arr[mid] && arr[mid + 1] > arr[mid]) {
+                break;
+            } else {
+                if (arr[mid] > arr[mid + 1]) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+        }
+
+        return arr[left] < arr[right] ? left : right;
     }
 }

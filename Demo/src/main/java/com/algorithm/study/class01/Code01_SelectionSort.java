@@ -20,9 +20,7 @@ public class Code01_SelectionSort {
             for (int j = i + 1; j < arr.length; j++) {
                 minIndex = arr[j] < arr[minIndex] ? j : minIndex;
             }
-            if (minIndex != i) {
                 swap(arr, i, minIndex);
-            }
         }
     }
 
