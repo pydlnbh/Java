@@ -824,15 +824,15 @@ public class Solution011 {
         // 打印测试结果
         System.out.println(succeed ? "测试成功" : "测试失败");
 
-//        int[] arr = {12, 4, 2, 1, 4};
-//        selectionSort05(arr);
-//        printArray(arr);
+        int[] arr = {12, 4, 2, 1, 4};
+        selectionSort06(arr);
+        printArray(arr);
 
 //        int sum = new preSum01(arr).rangeSum(2, 4);
 //        System.out.println(sum);
 
 //        randomTest();
-//        int flag = BSMiniNum(arr);
+//        int flag = BSMiniNum01(arr);
 //        System.out.println(flag);
     }
 
@@ -932,6 +932,22 @@ public class Solution011 {
     }
 
     public static void selectionSort05(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            int index = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[index]) {
+                    index = j;
+                }
+            }
+            swap(arr, i, index);
+        }
+    }
+
+    public static void selectionSort06(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
         }
@@ -1149,7 +1165,7 @@ public class Solution011 {
     }
 
     /**
-     * 在无序数组中找到局部最小值
+     * 在无序数组(相邻不相等)中找到局部最小值
      *
      * @param arr 数组
      * @return int
@@ -1170,7 +1186,7 @@ public class Solution011 {
         while (left < right - 1) {
             int mid = (left + right) / 2;
             if (arr[mid - 1] > arr[mid] && arr[mid + 1] > arr[mid]) {
-                break;
+                return mid;
             } else {
                 if (arr[mid] > arr[mid + 1]) {
                     left = mid + 1;
@@ -1184,7 +1200,7 @@ public class Solution011 {
     }
 
     /**
-     * 在无序数组中找到局部最小值
+     * 在无序数组(相邻不相等)中找到局部最小值
      *
      * @param arr 无序数组
      * @return int
@@ -1207,9 +1223,44 @@ public class Solution011 {
         while (left < right - 1) {
             int mid = (left + right) / 2;
             if (arr[mid - 1] > arr[mid] && arr[mid + 1] > arr[mid]) {
-                break;
+                return mid;
             } else {
                 if (arr[mid] > arr[mid + 1]) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+        }
+
+        return arr[left] < arr[right] ? left : right;
+    }
+
+    /**
+     * 在无序数组(相邻不相等)中找到局部最小值
+     *
+     * @param arr 数组
+     * @return int
+     */
+    public static int BSMiniNum01(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return -1;
+        }
+        if (arr[0] < arr[1] || arr.length == 1) {
+            return 0;
+        }
+        if (arr[arr.length - 1] < arr[arr.length - 2]) {
+            return arr.length - 1;
+        }
+
+        int left = 0;
+        int right = arr.length - 1;
+        while (left < right - 1) {
+            int mid = (left + right) / 2;
+            if (arr[mid - 1] > arr[mid] && arr[mid + 1] > arr[mid]) {
+                return mid;
+            } else {
+                if (arr[mid - 1] > arr[mid]) {
                     left = mid + 1;
                 } else {
                     right = mid - 1;

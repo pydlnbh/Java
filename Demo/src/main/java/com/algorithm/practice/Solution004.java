@@ -1,6 +1,35 @@
 package com.algorithm.practice;
 
 public class Solution004 {
+
+    public static class DoubleNode {
+        public int value;
+        public DoubleNode pre;
+        public DoubleNode next;
+
+        public DoubleNode(int value) {
+            this.value = value;
+        }
+    }
+
+    public static class Node {
+        public int value;
+        public Node next;
+
+        public Node(int value) {
+            this.value = value;
+        }
+    }
+
+    public static class Node01 {
+        public int value;
+        public Node01 next;
+
+        public Node01(int value) {
+            this.value = value;
+        }
+    }
+
     public static void main(String[] args) {
 
     }
@@ -248,33 +277,5 @@ public class Solution004 {
             cur = cur.next;
         }
         return head;
-    }
-}
-
-class Node {
-    public int value;
-    public Node next;
-
-    public Node(int value) {
-        this.value = value;
-    }
-}
-
-class DoubleNode {
-    public int value;
-    public DoubleNode pre;
-    public DoubleNode next;
-
-    public DoubleNode(int value) {
-        this.value = value;
-    }
-}
-
-class Node01 {
-    public int value;
-    public Node01 next;
-
-    public Node01(int value) {
-        this.value = value;
     }
 }
