@@ -1,5 +1,8 @@
 package com.algorithm.practice;
 
+import com.algorithm.primary.class04.Code04_ReverseNodesInKGroup;
+import com.sun.corba.se.impl.naming.namingutil.CorbalocURL;
+
 public class Solution012 {
 
     public static class Node {
@@ -257,12 +260,155 @@ public class Solution012 {
 
     }
 
+    public static Node reverseKGroup(Node head, int k) {
+        Node start = head;
+        Node end = getKGroupEnd(head, k);
+        if (end == null) {
+            return head;
+        }
+        head = end;
+        reverse(start, end);
+        Node lastEnd = start;
+        while (lastEnd.next != null) {
+            start = lastEnd.next;
+            end = getKGroupEnd(start, k);
+            if (end == null) {
+                return head;
+            }
+            reverse(start, end);
+            lastEnd.next = end;
+            lastEnd = start;
+        }
+        return head;
+    }
+
+    public static Node getKGroupEnd(Node start, int k) {
+        while (--k != 0 && start != null) {
+            start = start.next;
+        }
+        return start;
+    }
+
+    public static void reverse(Node start, Node end) {
+        end = end.next;
+        Node pre = null;
+        Node next = null;
+        Node cur = start;
+        while (cur != end) {
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        start.next = end;
+    }
+
+    public static Node reverseKGroup01(Node head, int k) {
+        Node start = head;
+        Node end = getKGroupEnd01(start, k);
+        if (end == null) {
+            return head;
+        }
+        head = end;
+        reverse01(start, end);
+        Node lastEnd = start;
+        while (lastEnd.next != null) {
+            start = lastEnd.next;
+            end = getKGroupEnd01(start, k);
+            if (end == null) {
+                return head;
+            }
+            reverse01(start, end);
+            lastEnd.next = end;
+            lastEnd = start;
+        }
+        return head;
+    }
+
+    public static Node getKGroupEnd01(Node start, int k) {
+        while (--k != 0 && start != null) {
+            start = start.next;
+        }
+        return start;
+    }
+
+    public static void reverse01(Node start, Node end) {
+        end = end.next;
+        Node pre = null;
+        Node next = null;
+        Node cur = start;
+        while (cur != end) {
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        start.next = end;
+    }
+
+    public static Node reverseKGroup02(Node head, int k) {
+        Node start = head;
+        Node end = getkGroupEnd02(start, k);
+        if (end == null) {
+            return head;
+        }
+        head = end;
+        reverse02(start, end);
+        Node lastEnd = start;
+        while (lastEnd.next != null) {
+            start = lastEnd.next;
+            end = getkGroupEnd02(start, k);
+            if (end == null) {
+                return head;
+            }
+            reverse02(start, end);
+            lastEnd.next = end;
+            lastEnd = start;
+        }
+        return head;
+    }
+
+    private static void reverse02(Node start, Node end) {
+        end = end.next;
+        Node pre = null;
+        Node next = null;
+        Node cur = start;
+        while (cur != end) {
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        start.next = end;
+    }
+
+    private static Node getkGroupEnd02(Node start, int k) {
+        while (--k != 0 && start != null) {
+            start = start.next;
+        }
+        return start;
+    }
+
     public static void main(String[] args) {
 //        testNode();
 //        testDoubleNode();
 //        testMyQueue();
 //        testMyStack();
-        testMyDeque();
+//        testMyDeque();
+        testReverseKGroup();
+    }
+
+    private static void testReverseKGroup() {
+        Node node = new Node(1);
+        node.next = new Node(2);
+        node.next.next = new Node(3);
+        node.next.next.next = new Node(4);
+        node.next.next.next.next = new Node(5);
+        Node node1 = reverseKGroup01(node, 2);
+        while (node1 != null) {
+            System.out.print(node1.value + " ");
+            node1 = node1.next;
+        }
     }
 
     private static void testMyDeque() {

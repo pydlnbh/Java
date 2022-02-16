@@ -58,8 +58,14 @@ public class Code04_ReverseNodesInKGroup {
     public static void main(String[] args) {
         Node node = new Node(1);
         node.next = new Node(2);
-        Node start = getKGroupEnd(node, 2);
-        System.out.println(start);
+        node.next.next = new Node(3);
+        node.next.next.next = new Node(4);
+        node.next.next.next.next = new Node(5);
+        Node node1 = reverseKGroup(node, 2);
+        while (node1 != null) {
+            System.out.print(node1.value + " ");
+            node1 = node1.next;
+        }
     }
 
 }
