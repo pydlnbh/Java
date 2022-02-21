@@ -389,15 +389,6 @@ public class Solution012 {
         return start;
     }
 
-    public static void main(String[] args) {
-//        testNode();
-//        testDoubleNode();
-//        testMyQueue();
-//        testMyStack();
-//        testMyDeque();
-        testReverseKGroup();
-    }
-
     private static void testReverseKGroup() {
         Node node = new Node(1);
         node.next = new Node(2);
@@ -489,5 +480,278 @@ public class Solution012 {
             head = head.next;
         }
         System.out.println();
+    }
+
+    /**
+     * 反转单链表
+     *
+     * @param head 头结点
+     * @return Node
+     */
+    public static Node reverseLinkedList01(Node head) {
+        Node pre = null;
+        Node next = null;
+        while (head != null) {
+            next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+        }
+        return pre;
+    }
+
+    /**
+     * 反转双向链表
+     *
+     * @param head 头结点
+     * @return DoubleNode
+     */
+    public static DoubleNode reverseDoubleLinkedList01(DoubleNode head) {
+        DoubleNode pre = null;
+        DoubleNode next = null;
+        while (head != null) {
+            next = head.next;
+            head.next = pre;
+            head.last = next;
+            pre = head;
+            head = next;
+        }
+        return pre;
+    }
+
+    public static class MyQueue01<T> {
+        private NodeT<T> head;
+        private NodeT<T> tail;
+        private int size;
+
+        public MyQueue01() {
+            head = null;
+            tail = null;
+            size = 0;
+        }
+
+        public boolean isEmpty() {
+            return size == 0;
+        }
+
+        public int size() {
+            return size;
+        }
+
+        public void offer(T value) {
+            NodeT<T> cur = new NodeT<>(value);
+            if (head == null) {
+                head = cur;
+                tail = cur;
+            } else {
+                tail.next = cur;
+                tail = cur;
+            }
+            size++;
+        }
+
+        public T poll() {
+            T ans = null;
+            if (head == null) {
+                return ans;
+            } else {
+                ans = head.value;
+                head = head.next;
+            }
+            size--;
+            if (head == tail) {
+                tail = null;
+            }
+            return ans;
+        }
+
+        public T peek() {
+            return head != null ? head.value : null;
+        }
+
+    }
+
+    public static class MyStack01<T> {
+        private NodeT<T> head;
+        private int size;
+
+        public MyStack01() {
+            head = null;
+            size = 0;
+        }
+
+        public boolean isEmpty() {
+            return size == 0;
+        }
+
+        public int size() {
+            return size;
+        }
+
+        public void push(T value) {
+            NodeT<T> cur = new NodeT<>(value);
+            if (head == null) {
+                head = cur;
+            } else {
+                cur.next = head;
+                head = cur;
+            }
+            size++;
+        }
+
+        public T pop() {
+            T ans = null;
+            if (head == null) {
+                return ans;
+            } else {
+                ans = head.value;
+                head = head.next;
+            }
+            return ans;
+        }
+
+        public T peek() {
+            return head != null ? head.value : null;
+        }
+    }
+
+    public static class MyDeque01<T> {
+        private DoubleLinkedList<T> head;
+        private DoubleLinkedList<T> tail;
+        private int size;
+
+        public MyDeque01() {
+            head = null;
+            tail = null;
+            size = 0;
+        }
+
+        public boolean isEmpty() {
+            return size == 0;
+        }
+
+        public int size() {
+            return size;
+        }
+
+        public void pushHead(T value) {
+            DoubleLinkedList<T> cur = new DoubleLinkedList<>(value);
+            if (head == null) {
+                head = cur;
+                tail = cur;
+            } else {
+                cur.next = head;
+                head.last = cur;
+                head = cur;
+            }
+            size++;
+        }
+
+        public void pushTail(T value) {
+            DoubleLinkedList<T> cur = new DoubleLinkedList<>(value);
+            if (head == null) {
+                head = cur;
+                tail = cur;
+            } else {
+                tail.next = cur;
+                cur.last = tail;
+                tail = cur;
+            }
+            size++;
+        }
+
+        public T popHead() {
+            T ans = null;
+            if (head == null) {
+                return ans;
+            }
+            size--;
+            ans = head.value;
+            if (head == tail) {
+                head = null;
+                tail = null;
+            } else {
+                head = head.next;
+                head.last = null;
+            }
+            return ans;
+        }
+
+        public T popTail() {
+            T ans = null;
+            if (head == null) {
+                return ans;
+            }
+            size--;
+            ans = tail.value;
+            if (head == tail) {
+                head = null;
+                tail = null;
+            } else {
+                tail = tail.last;
+                tail.next = null;
+            }
+            return ans;
+        }
+
+        public T peekHead() {
+            return head != null ? head.value : null;
+        }
+
+        public T peekTail() {
+            return tail != null ? tail.value : null;
+        }
+    }
+
+    public static Node reverseKGroup03(Node head, int k) {
+        Node start = head;
+        Node end = getKGroupEnd03(start, k);
+        if (end == null) {
+            return head;
+        }
+        head = end;
+        reverse03(start, end);
+        Node lastEnd = start;
+        while (lastEnd.next != null) {
+            start = lastEnd.next;
+            end = getKGroupEnd03(start, k);
+            if (end == null) {
+                return head;
+            }
+            reverse03(start, end);
+            lastEnd.next = end;
+            lastEnd = start;
+        }
+        return head;
+    }
+
+    public static Node getKGroupEnd03(Node start, int k) {
+        while (--k != 0 && start != null) {
+            start = start.next;
+        }
+        return start;
+    }
+
+    public static void reverse03(Node start, Node end) {
+        end = end.next;
+        Node pre = null;
+        Node next = null;
+        Node cur = start;
+        while (cur != end) {
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        start.next = end;
+    }
+
+    public static void main(String[] args) {
+//        testNode();
+//        testDoubleNode();
+//        testMyQueue();
+//        testMyStack();
+//        testMyDeque();
+//        testReverseKGroup();
     }
 }
