@@ -8,6 +8,54 @@ import java.util.Arrays;
 public class Solution011 {
 
     /**
+     * 主方法
+     *
+     * @param args 标准参数
+     */
+    public static void main(String[] args) {
+        // 定义测试参数
+        boolean succeed = true;
+        int testTimes = 100000;
+        int maxLength = 1000;
+        int maxValue = 1000;
+        // 打印int整型二进制
+//        printBinary(2);
+//        printBinary01(2);
+        // 计算阶乘之和
+//        System.out.println(factorialSum(10));
+//        System.out.println(factorialSum01(10));
+        // 排序对数器测试
+//        succeed = sortTest(succeed, testTimes, maxLength, maxValue);
+        // 前缀和数组测试
+//        succeed = PreSumTest(succeed, testTimes, maxLength, maxValue);
+        // 从a-b随机到c-d随机
+//        equalProbability(testTimes);
+        // 01不等概率到01等概率随机
+//        zeroOneEqualProbability(testTimes);
+        // 二分查找对数器
+//        succeed = binarySearchTest(succeed, testTimes, maxLength, maxValue);
+        // 二分查找>=某数最左侧的下标对数器
+//        succeed = nearLeftIndexTest(succeed, testTimes, maxLength, maxValue);
+        // 二分查找<=某数最右侧的下标对数器
+//        succeed = nearRightIndexTest(succeed, testTimes, maxLength, maxValue);
+        // 二分查找局部最小下标对数器
+//        succeed = getMinIndexTest(succeed, testTimes, maxLength, maxValue);
+        // 打印测试结果
+        System.out.println(succeed ? "测试成功" : "测试失败");
+
+        int[] arr = {12, 4, 2, 1, 4};
+        selectionSort06(arr);
+        printArray(arr);
+
+//        int sum = new preSum01(arr).rangeSum(2, 4);
+//        System.out.println(sum);
+
+//        randomTest();
+//        int flag = BSMiniNum01(arr);
+//        System.out.println(flag);
+    }
+
+    /**
      * 打印int整型的二进制
      *
      * @param num 参数
@@ -178,11 +226,11 @@ public class Solution011 {
         // 换行
         System.out.println();
     }
-
     /**
      * 前缀和数组
      */
     public static class PreSum {
+
         private int[] arr;
 
         /**
@@ -201,7 +249,6 @@ public class Solution011 {
                 this.arr[i] = this.arr[i - 1] + arr[i];
             }
         }
-
         /**
          * 从left到right的和
          *
@@ -212,15 +259,15 @@ public class Solution011 {
         public int rangeSum(int left, int right) {
             return left == 0 ? arr[right] : arr[right] - arr[left - 1];
         }
-    }
 
+    }
     public static class PreSumTest {
+
         private int[] arr;
 
         public PreSumTest(int[] arr) {
             this.arr = arr;
         }
-
         public int rangeSum(int left, int right) {
             int ans = 0;
             for (int i = left; i <= right; i++) {
@@ -228,6 +275,7 @@ public class Solution011 {
             }
             return ans;
         }
+
     }
 
     /**
@@ -310,12 +358,12 @@ public class Solution011 {
         // 返回
         return succeed;
     }
-
     /**
      * 从a-b随机到c-d随机
      * 例: 已知方法等概率返回8 ~ 22, 给出等该率返回3 ~ 19
      */
     public static class EqualProbability {
+
 
         /**
          * 等概率返回8 ~ 22
@@ -786,54 +834,6 @@ public class Solution011 {
         }
         // 返回
         return succeed;
-    }
-
-    /**
-     * 主方法
-     *
-     * @param args 标准参数
-     */
-    public static void main(String[] args) {
-        // 定义测试参数
-        boolean succeed = true;
-        int testTimes = 100000;
-        int maxLength = 1000;
-        int maxValue = 1000;
-        // 打印int整型二进制
-//        printBinary(2);
-//        printBinary01(2);
-        // 计算阶乘之和
-//        System.out.println(factorialSum(10));
-//        System.out.println(factorialSum01(10));
-        // 排序对数器测试
-//        succeed = sortTest(succeed, testTimes, maxLength, maxValue);
-        // 前缀和数组测试
-//        succeed = PreSumTest(succeed, testTimes, maxLength, maxValue);
-        // 从a-b随机到c-d随机
-//        equalProbability(testTimes);
-        // 01不等概率到01等概率随机
-//        zeroOneEqualProbability(testTimes);
-        // 二分查找对数器
-//        succeed = binarySearchTest(succeed, testTimes, maxLength, maxValue);
-        // 二分查找>=某数最左侧的下标对数器
-//        succeed = nearLeftIndexTest(succeed, testTimes, maxLength, maxValue);
-        // 二分查找<=某数最右侧的下标对数器
-//        succeed = nearRightIndexTest(succeed, testTimes, maxLength, maxValue);
-        // 二分查找局部最小下标对数器
-//        succeed = getMinIndexTest(succeed, testTimes, maxLength, maxValue);
-        // 打印测试结果
-        System.out.println(succeed ? "测试成功" : "测试失败");
-
-        int[] arr = {12, 4, 2, 1, 4};
-        selectionSort06(arr);
-        printArray(arr);
-
-//        int sum = new preSum01(arr).rangeSum(2, 4);
-//        System.out.println(sum);
-
-//        randomTest();
-//        int flag = BSMiniNum01(arr);
-//        System.out.println(flag);
     }
 
     /**

@@ -1,9 +1,7 @@
 package com.algorithm.primary.class02;
 
 /**
- * @author peiyiding
- * @date 2022/1/4 17:39
- * @descption 随机数
+ * 从a ~ b 随机 到 c ~ d随机
  */
 public class Code02_RandToRand {
 
