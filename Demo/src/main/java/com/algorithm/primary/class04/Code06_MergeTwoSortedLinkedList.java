@@ -1,7 +1,10 @@
 package com.algorithm.primary.class04;
 
 /**
- * 合并两个有序链表
+ * 两个有序链表的合并 给定两个有序链表的头节点head1和head2， 返回合并之后的大链表，要求依然有序
+ * 例子 1 -> 3 -> 3 -> 5 -> 7 2 -> 2 -> 3 -> 3-> 7 返回 1 -> 2 -> 2 -> 3 -> 3 -> 3 -> 3 -> 5 -> 7
+ *
+ * 测试链接：https://leetcode.com/problems/merge-two-sorted-lists
  */
 public class Code06_MergeTwoSortedLinkedList {
 
