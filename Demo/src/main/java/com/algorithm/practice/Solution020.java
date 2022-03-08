@@ -1,5 +1,7 @@
 package com.algorithm.practice;
 
+import cn.hutool.core.util.ReUtil;
+
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -476,6 +478,9 @@ public class Solution020 {
         System.out.println(stack.peek());
     }
 
+    /**
+     * 对数器测试用单链表实现队列
+     */
     public static void testQueue() {
         MyQueue<Integer> myQueue = new MyQueue<>();
         Queue<Integer> test = new LinkedList<>();
@@ -525,6 +530,9 @@ public class Solution020 {
         System.out.println("测试结束！");
     }
 
+    /**
+     * 对数器测试用单链表实现栈
+     */
     public static void testStack() {
         MyStack<Integer> myStack = new MyStack<>();
         Stack<Integer> test = new Stack<>();
@@ -595,7 +603,7 @@ public class Solution020 {
     }
 
     /**
-     * 测试用双链表实现双端队列
+     * 对数器测试用双链表实现双端队列
      */
     public static void testMyDeque1() {
         MyDeque<Integer> myDeque = new MyDeque<>();
