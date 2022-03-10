@@ -7,6 +7,10 @@ import java.util.PriorityQueue;
 
 /**
  * 用code展示比较器的使用
+ *
+ * 第一个参数小于第二个参数 返回-1
+ * 第一个参数等于第二个参数 返回0
+ * 第一个参数大于第二个参数 返回1
  */
 public class Code01_Comparator {
 
