@@ -62,11 +62,30 @@ public class Code08_ConstructBinaryTreeFromPreorderAndInorderTraversal {
         }
         int find = valueIndexMap.get(pre[L1]);
         head.left = g(pre, L1 + 1, L1 + find - L2, in, L2, find - 1, valueIndexMap);
-        head.right = g(pre, L1 + find - L2, R1, in, find + 1, R2, valueIndexMap);
+        head.right = g(pre, L1 + find - L2 + 1, R1, in, find + 1, R2, valueIndexMap);
         return head;
     }
 
-    public static void main(String[] args) {
+    public static void post(TreeNode head) {
+        if (head == null) {
+            return;
+        }
+        post(head.left);
+        post(head.right);
+        System.out.print(head.val + " ");
+    }
 
+    public static void main(String[] args) {
+        //              1
+        //      2               3
+        // 4         5     6           7
+        // 1 2 4 5 3 6 7
+        // 4 2 5 1 6 3 7
+        // 4 5 2 6 7 3 1
+        int[] pre = {1, 2, 4, 5, 3, 6, 7};
+        int[] in = {4, 2, 5, 1, 6, 3, 7};
+        TreeNode treeNode = buildTree1(pre, in);
+//        TreeNode treeNode = buildTree2(pre, in);
+        post(treeNode);
     }
 }
