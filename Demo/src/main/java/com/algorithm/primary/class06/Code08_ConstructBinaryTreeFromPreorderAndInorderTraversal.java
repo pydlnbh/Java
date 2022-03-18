@@ -84,8 +84,8 @@ public class Code08_ConstructBinaryTreeFromPreorderAndInorderTraversal {
         // 4 5 2 6 7 3 1
         int[] pre = {1, 2, 4, 5, 3, 6, 7};
         int[] in = {4, 2, 5, 1, 6, 3, 7};
-        TreeNode treeNode = buildTree1(pre, in);
-//        TreeNode treeNode = buildTree2(pre, in);
+//        TreeNode treeNode = buildTree1(pre, in);
+        TreeNode treeNode = buildTree2(pre, in);
         post(treeNode);
     }
 }

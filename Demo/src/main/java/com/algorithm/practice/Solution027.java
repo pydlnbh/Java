@@ -3,6 +3,7 @@ package com.algorithm.practice;
 import com.algorithm.primary.class06.Code02_TraversalBinaryTree;
 
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.PriorityQueue;
 
 public class Solution027 {
@@ -128,4 +129,31 @@ public class Solution027 {
         System.out.println();
         post(head);
     }
+
+    private TreeNode buildTree(int[] pre, int[] in) {
+        if (pre == null || in == null || pre.length != in.length) {
+            return null;
+        }
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < in.length; i++) {
+            map.put(in[i], i);
+        }
+        return g(pre, 0, pre.length - 1, in, 0, in.length - 1, map);
+    }
+
+    private TreeNode g(int[] pre, int L1, int R1, int[] in, int L2, int R2, HashMap<Integer, Integer> map) {
+        if (L1 > R1) {
+            return null;
+        }
+        TreeNode head = new TreeNode(pre[L1]);
+        if (L1 == R1) {
+            return head;
+        }
+
+        Integer find = map.get(pre[1]);
+        head.left = g(pre, L1 + 1, L1 + find - L2, in, L2, find - 1, map);
+        head.right = g(pre, L1 + find - L2 + 1, R1, in, find + 1, R2, map);
+        return head;
+    }
+
 }
