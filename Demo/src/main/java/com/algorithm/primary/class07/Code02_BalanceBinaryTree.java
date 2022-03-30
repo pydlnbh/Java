@@ -1,4 +1,4 @@
-package com.algorithm.primary.code07;
+package com.algorithm.primary.class07;
 
 // 测试链接：https://leetcode.com/problems/balanced-binary-tree
 public class Code02_BalanceBinaryTree {

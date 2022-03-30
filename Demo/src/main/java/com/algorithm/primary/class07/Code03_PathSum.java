@@ -1,4 +1,4 @@
-package com.algorithm.primary.code07;
+package com.algorithm.primary.class07;
 
 public class Code03_PathSum {
 
