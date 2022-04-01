@@ -216,7 +216,7 @@ Leetcode原题，https://leetcode.com/problems/path-sum-ii
 
 题目：
 
-不要用任何比较判断，返回两个数中较大的数
+[comment]: <> (不要用任何比较判断，返回两个数中较大的数)
 
 归并排序的递归实现和非递归实现
 

@@ -10,8 +10,6 @@ public class Solution029 {
         if (arr == null || arr.length < 2) {
             return;
         }
-        int L = 0;
-        int R = arr.length - 1;
         process(arr, 0, arr.length - 1);
     }
 
@@ -77,7 +75,7 @@ public class Solution029 {
             int[] arr = generateRandomArray(maxSize, maxValue);
             int[] copyArray = copy(arr);
             mergeSort01(arr);
-            mergeSort02(arr);
+//            mergeSort02(arr);
             Arrays.sort(copyArray);
             if (!isEqual(arr, copyArray)) {
                 succeed = false;

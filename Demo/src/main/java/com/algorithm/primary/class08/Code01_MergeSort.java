@@ -2,7 +2,7 @@ package com.algorithm.primary.class08;
 
 import java.util.Arrays;
 
-public class Code02_MergeSort {
+public class Code01_MergeSort {
 
     public static void mergeSort01(int[] arr) {
         if (arr == null || arr.length < 2) {
