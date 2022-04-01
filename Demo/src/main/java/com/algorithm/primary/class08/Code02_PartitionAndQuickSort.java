@@ -155,7 +155,6 @@ public class Code02_PartitionAndQuickSort {
         return true;
     }
 
-
     public static void main(String[] args) {
         test();
     }
