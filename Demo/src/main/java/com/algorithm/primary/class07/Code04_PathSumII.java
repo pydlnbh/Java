@@ -53,4 +53,8 @@ public class Code04_PathSumII {
         }
         return res;
     }
+
+    public static void main(String[] args) {
+
+    }
 }

@@ -117,30 +117,6 @@ public class Solution030 {
         test();
     }
 
-    public static void test() {
-        int maxSize = 1000;
-        int maxValue = 1000;
-        int testTimes = 10000;
-        boolean succeed = true;
-        for (int i = 0; i < testTimes; i++) {
-            int[] arr = generateRandomArray(maxSize, maxValue);
-            int[] copyArray = copy(arr);
-//            mergeSort01(arr);
-//            mergeSort02(arr);
-//            mergeSort03(arr);
-//            quickSort01(arr);
-//            quickSort02(arr);
-//            quickSort03(arr);
-            quickSort04(arr);
-            Arrays.sort(copyArray);
-            if (!isEqual(arr, copyArray)) {
-                succeed = false;
-                break;
-            }
-        }
-        System.out.println(succeed ? "yes" : "no");
-    }
-
     public static void quickSort02(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
@@ -310,5 +286,304 @@ public class Solution030 {
         }
         swap(arr, moreL, R);
         return new int[]{lessR, moreL};
+    }
+
+    public static void selectionSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            int index = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[index] > arr[j]) {
+                    index = j;
+                }
+            }
+            swap(arr, index, i);
+        }
+    }
+
+    public static void bubbleSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        for (int i = arr.length - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                }
+            }
+        }
+    }
+
+    public static void insertionSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                }
+            }
+        }
+    }
+
+    public static void mergeSort04(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        processM(arr, 0, arr.length - 1);
+    }
+
+    public static void processM(int[] arr, int L, int R) {
+        if (L >= R) {
+            return;
+        }
+        int M = L + ((R - L) >> 1);
+        processM(arr, L, M);
+        processM(arr, M + 1, R);
+        mergeM(arr, L, M, R);
+    }
+
+    public static void mergeM(int[] arr, int L, int M, int R) {
+        int[] help = new int[R - L + 1];
+        int i = 0;
+        int p = L;
+        int q = M + 1;
+        while (p <= M && q <= R) {
+            help[i++] = arr[p] <= arr[q] ? arr[p++] : arr[q++];
+        }
+        while (p <= M) {
+            help[i++] = arr[p++];
+        }
+        while (q <= R) {
+            help[i++] = arr[q++];
+        }
+        for (i = 0; i < help.length; i++) {
+            arr[L + i] = help[i];
+        }
+    }
+
+    public static void quickSort05(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        processQ(arr, 0, arr.length - 1);
+    }
+
+    public static void processQ(int[] arr, int L, int R) {
+        if (L >= R) {
+            return;
+        }
+        int[] equals = partitionQ(arr, L, R);
+        processQ(arr, L, equals[0]);
+        processQ(arr, equals[1] + 1, R);
+    }
+
+    public static int[] partitionQ(int[] arr, int L, int R) {
+        int index = L;
+        int lessR = L - 1;
+        int moerL = R;
+        while (index < moerL) {
+            if (arr[index] < arr[R]) {
+                swap(arr, ++lessR, index++);
+            } else if (arr[index] > arr[R]) {
+                swap(arr, --moerL, index);
+            } else {
+                index++;
+            }
+        }
+        swap(arr, moerL, R);
+        return new int[]{lessR, moerL};
+    }
+
+    public static void selectionSort01(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            int index = i; // 数组最小下标定义为i, 不能定义为0
+            for (int j = i + 1; j < arr.length; j++) {
+                index = arr[index] > arr[j] ? j : index;
+            }
+            swap(arr, i, index);
+        }
+    }
+
+    public static void bubbleSort01(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) { // 冒泡排序不能等于i, 否则会出现下标越界
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                }
+            }
+        }
+    }
+
+    public static void insertionSort01(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                }
+            }
+        }
+    }
+
+    public static void mergeSort05(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        mergeM01(arr, 0, arr.length - 1);
+    }
+
+    public static void mergeM01(int[] arr, int L, int R) {
+        if (L >= R) {
+            return;
+        }
+
+        int M = L + ((R - L) >> 1);
+        mergeM01(arr, L, M);
+        mergeM01(arr, M + 1, R);
+        merge01(arr, L, M, R);
+    }
+
+
+    public static void merge01(int[] arr, int L, int M, int R) {
+        int[] help = new int[R - L + 1];
+        int p = L;
+        int q = M + 1;
+        int i = 0;
+        while (p <= M && q <= R) {
+            help[i++] = arr[p] < arr[q] ? arr[p++] : arr[q++];
+        }
+        while (p <= M) {
+            help[i++] = arr[p++];
+        }
+        while (q <= R) {
+            help[i++] = arr[q++];
+        }
+        for (i = 0; i < help.length; i++) {
+            arr[L + i] = help[i];
+        }
+    }
+
+    public static void mergeSort06(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        mergeM02(arr, 0, arr.length - 1);
+    }
+
+    public static void mergeM02(int[] arr, int L, int R) {
+        if (L >= R) {
+            return;
+        }
+
+        int M = L + ((R - L) >> 1);
+        mergeM02(arr, L, M);
+        mergeM02(arr, M + 1, R);
+        merge0(arr, L, M, R);
+    }
+
+    public static void merge0(int[] arr, int L, int M, int R) {
+        int[] help = new int[R - L + 1];
+        int i = 0;
+        int p = L;
+        int q = M + 1;
+        while (p <= M && q <= R) {
+            help[i++] = arr[p] <= arr[q] ? arr[p++] : arr[q++];
+        }
+        while (p <= M) {
+            help[i++] = arr[p++]; // 使用辅助数组help, 而不是传入的参数
+        }
+        while (q <= R) {
+            help[i++] = arr[q++]; // 使用辅助数组help, 而不是传入的参数
+        }
+        for (i = 0; i < help.length; i++) {
+            arr[L + i] = help[i]; // 给传入的参数赋值
+        }
+    }
+
+    public static void quickSort06(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        quickSortRecursion(arr, 0, arr.length - 1);
+    }
+
+    public static void quickSortRecursion(int[] arr, int L, int R) {
+        if (L >= R) {
+            return;
+        }
+
+        int[] equals = partition04(arr, L, R);
+        quickSortRecursion(arr, L, equals[0]);
+        quickSortRecursion(arr, equals[1] + 1, R);
+    }
+
+    public static int[] partition04(int[] arr, int L, int R) {
+        int index = L;
+        int lessR = L - 1;
+        int moreL = R;
+        while (index < moreL) {
+            if (arr[index] < arr[R]) {
+                swap(arr, ++lessR, index++);
+            } else if (arr[index] > arr[R]) {
+                swap(arr, --moreL, index);
+            } else {
+                index++;
+            }
+        }
+
+        swap(arr, moreL, R);
+
+        return new int[]{lessR, moreL};
+    }
+
+    public static void test() {
+        int maxSize = 1000;
+        int maxValue = 1000;
+        int testTimes = 10000;
+        boolean succeed = true;
+        for (int i = 0; i < testTimes; i++) {
+            int[] arr = generateRandomArray(maxSize, maxValue);
+            int[] copyArray = copy(arr);
+//            selectionSort(arr);
+//            selectionSort01(arr);
+//            bubbleSort(arr);
+//            bubbleSort01(arr);
+//            insertionSort(arr);
+//            insertionSort01(arr);
+//            mergeSort01(arr);
+//            mergeSort02(arr);
+//            mergeSort03(arr);
+//            mergeSort04(arr);
+//            mergeSort05(arr);
+            mergeSort06(arr);
+//            quickSort01(arr);
+//            quickSort02(arr);
+//            quickSort03(arr);
+//            quickSort04(arr);
+//            quickSort05(arr);
+//            quickSort06(arr);
+            Arrays.sort(copyArray);
+            if (!isEqual(arr, copyArray)) {
+                succeed = false;
+                break;
+            }
+        }
+        System.out.println(succeed ? "yes" : "no");
     }
 }
