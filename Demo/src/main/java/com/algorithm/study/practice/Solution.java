@@ -32,7 +32,36 @@ public class Solution {
         return left;
     }
 
-    public static void main(String[] args) {
+    /**
+     * 一个数组中有两种数出现了奇数次，其他数都出现了偶数次，怎么找到并打印这两种数
+     *
+     * @param arr
+     */
+    public static void printOddTimes(int[] arr) {
+        int eor = 0;
+        for (int i = 0; i < arr.length; i++) {
+            eor ^= arr[i];
+        }
 
+        int rightOne = eor & (-eor);
+
+        int ans = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if ((arr[i] & rightOne) != 0) {
+                ans ^= arr[i];
+            }
+        }
+
+        System.out.println("1: " + ans + ", 2: " + (ans ^ eor));
+    }
+
+    public static int km(int[] arr, int k, int m) {
+        int ans = 0;
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {2, 2, 2, 4, 4, 4, 5, 5, 8, 8};
+        printOddTimes(arr);
     }
 }
