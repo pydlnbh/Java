@@ -55,13 +55,75 @@ public class Solution {
         System.out.println("1: " + ans + ", 2: " + (ans ^ eor));
     }
 
-    public static int km(int[] arr, int k, int m) {
+    public static void printOddTimes01(int[] arr) {
+        int eor = 0;
+        for (int i = 0; i < arr.length; i++) {
+            eor ^= arr[i];
+        }
+
+        int rightOne = eor & (-eor);
+
         int ans = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if ((arr[i] & rightOne) != 0) {
+                ans ^= arr[i];
+            }
+        }
+
+        System.out.println("1: " + ans + ", 2: " + (ans ^ eor));
+    }
+
+    public static void printOddTimes02(int[] arr) {
+        int eor = 0;
+        for (int i = 0; i < arr.length; i++) {
+            eor ^= arr[i];
+        }
+
+        int rightOne = eor & (-eor);
+
+        int ans = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if ((arr[i] & rightOne) != 0) {
+                ans ^= arr[i];
+            }
+        }
+
+        System.out.println("1: " + ans + ", 2: " + (eor ^ ans));
+    }
+
+    private static void testOddTimes() {
+        int[] arr = {2, 2, 2, 4, 4, 4, 5, 5, 8, 8};
+        printOddTimes(arr);
+        printOddTimes01(arr);
+        printOddTimes02(arr);
+    }
+
+    /**
+     * 输入一定能够保证，数组中所有的数都出现了M次，只有一种数出现了K次
+     *
+     * @param arr
+     * @param k
+     * @param m
+     * @return
+     */
+    public static int km(int[] arr, int k, int m) {
+        int[] help = new int[32];
+        for (int num : arr) {
+            for (int i = 0; i < 32; i++) {
+                help[i] += (num >> i) & 1;
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i < 32; i++) {
+            help[i] %= m;
+            if (help[i] != 0) {
+                ans |= 1 << i;
+            }
+        }
         return ans;
     }
 
     public static void main(String[] args) {
-        int[] arr = {2, 2, 2, 4, 4, 4, 5, 5, 8, 8};
-        printOddTimes(arr);
+//        testOddTimes();
     }
 }
