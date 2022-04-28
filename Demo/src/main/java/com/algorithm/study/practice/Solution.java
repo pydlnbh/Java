@@ -91,11 +91,27 @@ public class Solution {
         System.out.println("1: " + ans + ", 2: " + (eor ^ ans));
     }
 
+    public static void printOddTimes03(int[] arr) {
+        int eor = 0;
+        for (int i : arr) {
+            eor ^= i;
+        }
+        int rightOne = eor & (-eor);
+        int ans = 0;
+        for (int i : arr) {
+            if ((i & rightOne) != 0) {
+                ans ^= i;
+            }
+        }
+        System.out.println("1: " + ans + ", 2: " + (ans ^ eor));
+    }
+
     private static void testOddTimes() {
         int[] arr = {2, 2, 2, 4, 4, 4, 5, 5, 8, 8};
         printOddTimes(arr);
         printOddTimes01(arr);
         printOddTimes02(arr);
+        printOddTimes03(arr);
     }
 
     /**
@@ -116,6 +132,57 @@ public class Solution {
         int ans = 0;
         for (int i = 0; i < 32; i++) {
             help[i] %= m;
+            if (help[i] != 0) {
+                ans |= 1 << i;
+            }
+        }
+        return ans;
+    }
+
+    public static int km01(int[] arr, int k, int m) {
+        int[] help = new int[32];
+        for (int num : arr) {
+            for (int i = 0; i < 32; i++) {
+                help[i] += (num >> i) & 1;
+            }
+        }
+
+        int ans = 0;
+        for (int i = 0; i < 32; i++) {
+            help[i] %= m;
+            if (help[i] != 0) {
+                ans |= 1 << i;
+            }
+        }
+        return ans;
+    }
+
+    private static int km02(int[] arr, int k, int m) {
+        int[] help = new int[32];
+        for (int num : arr) {
+            for (int i = 0; i < 32; i++) {
+                help[i] += (num >> i) & 1;
+            }
+        }
+        int ans = 0;
+        for (int i : arr) {
+            help[i] %= m;
+            if (help[i] != 0) {
+                ans |= 1 << i;
+            }
+        }
+        return ans;
+    }
+
+    public static int km03(int[] arr, int k, int m) {
+        int[] help = new int[32];
+        for (int num : arr) {
+            for (int i = 0; i < 32; i++) {
+                help[i] += (num >> i) & 1;
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i < 32; i++) {
             if (help[i] != 0) {
                 ans |= 1 << i;
             }
