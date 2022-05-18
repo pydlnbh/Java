@@ -190,6 +190,22 @@ public class Solution {
         return ans;
     }
 
+    public static int km04(int[] arr, int m, int k) {
+        int[] help = new int[32];
+        for (int num : arr) {
+            for (int i = 0; i < 32; i++) {
+                help[i] += (num >> i) & 1;
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (help[i] != 0) {
+                ans |= 1 << i;
+            }
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
 //        testOddTimes();
     }
