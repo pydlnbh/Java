@@ -1,6 +1,58 @@
 package com.algorithm.study.practice;
 
+import java.util.Arrays;
+
 public class Solution {
+
+    public static void selectionSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            int index = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[index] > arr[j]) {
+                    index = j;
+                }
+            }
+            swap(arr, index, i);
+        }
+    }
+
+    public static void bubbleSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                }
+            }
+        }
+    }
+
+    public static void insertionSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                }
+            }
+        }
+    }
+
+    public static void swap(int[] arr, int i, int j) {
+        int t = arr[i];
+        arr[i] = arr[j];
+        arr[j] = t;
+    }
 
     /**
      * 无序相邻不相等数组二分找到局部最小值
@@ -206,7 +258,65 @@ public class Solution {
         return ans;
     }
 
+    public static void testSort() {
+        int testTimes = 10000;
+        int maxSize = 1000;
+        int maxValue = 1000;
+        boolean succeed = true;
+
+        for (int i = 0; i < testTimes; i++) {
+            int[] arr = genRanArr(maxSize, maxValue);
+            int[] copyArr = copy(arr);
+//            selectionSort(arr);
+//            bubbleSort(arr);
+            insertionSort(arr);
+            Arrays.sort(copyArr);
+            if (!isEqual(arr, copyArr)) {
+                succeed = false;
+                break;
+            }
+        }
+
+        System.out.println(succeed ? "yes" : "no");
+    }
+
+    private static boolean isEqual(int[] arr, int[] copyArr) {
+        if ((arr == null && copyArr != null) || (arr != null && copyArr == null)) {
+            return false;
+        }
+        if (arr == null && copyArr == null) {
+            return true;
+        }
+        if (arr.length != copyArr.length) {
+            return false;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != copyArr[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static int[] copy(int[] arr) {
+        int[] res = new int[arr.length];
+        for (int i = 0; i < res.length; i++) {
+            res[i] = arr[i];
+        }
+        return res;
+    }
+
+    private static int[] genRanArr(int maxSize, int maxValue) {
+        int[] arr = new int[(int) (Math.random() + 1) * maxSize];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = (int) Math.random() * maxValue - (int) Math.random() * maxValue;
+        }
+        return arr;
+    }
+
+
     public static void main(String[] args) {
 //        testOddTimes();
+        testSort();
     }
 }
