@@ -48,10 +48,38 @@ public class Solution {
         }
     }
 
+    public static class PreSum {
+        int[] preSum;
+
+        public PreSum(int[] arr) {
+            preSum = new int[arr.length];
+            preSum[0] = arr[0];
+            for (int i = 1; i < arr.length; i++) {
+                preSum[i] = preSum[i - 1] + arr[i];
+            }
+        }
+
+        public int rangeSum(int left, int right) {
+            return left == 0 ? preSum[right] : preSum[right] - preSum[left - 1];
+        }
+    }
+
     public static void swap(int[] arr, int i, int j) {
         int t = arr[i];
         arr[i] = arr[j];
         arr[j] = t;
+    }
+
+    public static void testPreSum() {
+        int[] arr = {2, 3, 5, 2, 32, 42};
+        PreSum preSum = new PreSum(arr);
+        int sum = preSum.rangeSum(2, 4);
+        int testSum = 0;
+        for (int i = 2; i <= 4; i++) {
+            testSum += arr[i];
+        }
+        boolean flag = sum == testSum ? true : false;
+        System.out.println(flag ? "yes" : "no");
     }
 
     /**
@@ -317,6 +345,7 @@ public class Solution {
 
     public static void main(String[] args) {
 //        testOddTimes();
-        testSort();
+//        testSort();
+//        testPreSum();
     }
 }
