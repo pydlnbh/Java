@@ -1,5 +1,8 @@
 package com.algorithm.primary.practice;
 
+/**
+ * 删除有序数组中的重复项: https://leetcode.cn/problems/remove-duplicates-from-sorted-array/
+ */
 public class RemoveDuplicates_26 {
 
     public static int removedup(int[] nums) {
