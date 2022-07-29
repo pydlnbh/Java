@@ -14,6 +14,7 @@ public class Code02_SumOfFactorial {
         long f3 = factorialPractice(num);
         System.out.println("f1 = " + f1 + ", f2 = " + f2);
         System.out.println(f3);
+        System.out.println(factorialDemo(num));
     }
 
     public static long f1(int n) {
@@ -53,6 +54,17 @@ public class Code02_SumOfFactorial {
         for (int i = 1; i <= num; i++) {
             cur *= i;
             res += cur;
+        }
+        return res;
+    }
+
+
+    public static int factorialDemo(int num) {
+        int res = 0;
+        int ans = 1;
+        for (int i = 1; i <= num; i++) {
+            ans *= i;
+            res += ans;
         }
         return res;
     }

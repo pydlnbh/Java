@@ -40,5 +40,44 @@ public class Code01_PrintBinary {
         int num = 5;
         String binary = binary(num);
         System.out.println(num + "的二进制: " + binary);
+        printBinaryDemo(num);
+        System.out.println();
+        printBinaryDemo01(num);
+        System.out.println();
+        printBinaryDemo02(num);
+        System.out.println();
+        printBinaryDemo03(num);
+    }
+
+    public static void printBinaryDemo(int num) {
+        for (int i = 31; i >= 0; i--) {
+            System.out.print((num & (1 << i)) == 0 ? 0 : 1);
+        }
+    }
+
+    public static void printBinaryDemo01(int num) {
+        for (int i = 31; i >= 0; i--) {
+            System.out.print((num & (1 << i)) == 0 ? 0 : 1);
+        }
+    }
+
+    public static void printBinaryDemo02(int num) {
+        for (int i = 31; i >= 0; i--) {
+            int index = 1 << i;
+            int indexNum = num & index;
+            System.out.print(indexNum == 0 ? 0 : 1);
+        }
+    }
+
+    public static void printBinaryDemo03(int num) {
+        for (int i = 31; i >= 0; i--) {
+            int index = 1 << i;
+            int indexNum = num & index;
+            if (indexNum == 0) {
+                System.out.print(0);
+            } else {
+                System.out.print(1);
+            }
+        }
     }
 }
