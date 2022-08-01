@@ -145,6 +145,110 @@ public class Code03_Sort {
         }
     }
 
+    public static void selectionSortDemo01(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[minIndex] > arr[j]) {
+                    minIndex = j;
+                }
+            }
+            swapDemo(arr, minIndex, i);
+        }
+    }
+
+    public static void selectionSortDemo02(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[minIndex] > arr[j]) {
+                    minIndex = j;
+                }
+            }
+            swapDemo(arr, minIndex, i);
+        }
+    }
+
+    public static void selectionSortDemo03(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[minIndex] > arr[j]) {
+                    minIndex = j;
+                }
+            }
+            swapDemo(arr, minIndex, i);
+        }
+    }
+
+    public static void bubbleSortDemo01(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swapDemo(arr, j, j + 1);
+                }
+            }
+        }
+    }
+
+    public static void bubbleSortDemo02(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swapDemo(arr, j, j + 1);
+                }
+            }
+        }
+    }
+
+    public static void insertionSortDemo01(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (arr[j] > arr[j + 1]) {
+                    swapDemo(arr, j, j + 1);
+                }
+            }
+        }
+    }
+
+    public static void insertionSortDemo02(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (arr[j] > arr[j + 1]) {
+                    swapDemo(arr, j, j + 1);
+                }
+            }
+        }
+    }
+
     public static void swapDemo(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
@@ -161,8 +265,15 @@ public class Code03_Sort {
             int[] copyArray = copy(arr);
             Arrays.sort(arr);
 //            selectionSortDemo(copyArray);
+//            selectionSortDemo01(copyArray);
+//            selectionSortDemo02(copyArray);
+            selectionSortDemo03(copyArray);
 //            bubbleSortDemo(copyArray);
-            insertionSortDemo(copyArray);
+//            bubbleSortDemo01(copyArray);
+//            bubbleSortDemo02(copyArray);
+//            insertionSortDemo(copyArray);
+//            insertionSortDemo01(copyArray);
+//            insertionSortDemo02(copyArray);
             if (!isEqual(arr, copyArray)) {
                 succeed = false;
                 break;

@@ -1,5 +1,7 @@
 package com.algorithm.primary.class02;
 
+import com.se.thread.test.Run;
+
 /**
  * @author peiyiding
  * @date 2021/12/27 22:56
@@ -50,5 +52,25 @@ public class Code01_PreSum {
         RangeSum2 rangeSum2 = new RangeSum2(arr);
         int i = rangeSum2.rangeSum(2, 4);
         System.out.println(i);
+
+        RangeSum3 rangeSum3 = new RangeSum3(arr);
+        int result = rangeSum3.range(2, 4);
+        System.out.println(result);
+    }
+
+    public static class RangeSum3 {
+        private int[] arr;
+
+        public RangeSum3(int[] arr) {
+            this.arr = new int[arr.length];
+            this.arr[0] = arr[0];
+            for (int i = 1; i < arr.length; i++) {
+                this.arr[i] = this.arr[i - 1] + arr[i];
+            }
+        }
+
+        public int range(int left, int right) {
+            return left == 0 ? arr[right] : arr[right] - arr[left - 1];
+        }
     }
 }

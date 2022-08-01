@@ -169,6 +169,74 @@ public class Code02_RandToRand {
         return ans;
     }
 
+    public static int f01() {
+        return (int) (Math.random() * 5) + 1;
+    }
+
+    public static int f02() {
+        int ans = 0;
+        do {
+            ans = f01();
+        } while (ans == 3);
+        return ans < 3 ? 0 : 1;
+    }
+
+    public static int f03() {
+        return (f02() << 2) + (f02() << 1) + f02();
+    }
+
+    public static int f04() {
+        int ans = 0;
+        do {
+            ans = f03();
+        } while (ans >= 7);
+        return ans;
+    }
+
+    public static int f05() {
+        return f04() + 1;
+    }
+
+    public static int f06() {
+        return Math.random() < 0.83 ? 0 : 1;
+    }
+
+    public static int f07() {
+        int ans = 0;
+        do {
+            ans = f06();
+        } while (ans == f06());
+        return ans;
+    }
+
+    public static int fun01() {
+        return (int) (Math.random() * 5) + 1;
+    }
+
+    public static int fun02() {
+        int ans = 0;
+        do {
+            ans = fun01();
+        } while (ans == 3);
+        return ans < 3 ? 0 : 1;
+    }
+
+    public static int fun03() {
+        return (fun02() << 2) + (fun02() << 1) + fun02();
+    }
+
+    public static int fun04() {
+        int ans = 0;
+        do {
+            ans = fun03();
+        } while (ans >= 7);
+        return ans;
+    }
+
+    public static int fun05() {
+        return fun04() + 1;
+    }
+
     public static void main(String[] args) {
         System.out.println("测试开始");
 
@@ -235,6 +303,28 @@ public class Code02_RandToRand {
             counts[num]++;
         }
         for (int i = 0; i < 2; i++) {
+            System.out.println(i + "这个数, 出现了" + counts[i] + "次");
+        }
+
+        System.out.println("====================================");
+
+        counts = new int[7];
+        for (int i = 0; i < testTimes; i++) {
+            counts[f01()]++;
+        }
+
+        for (int i = 0; i < counts.length; i++) {
+            System.out.println(i + "这个数, 出现了" + counts[i] + "次");
+        }
+
+        System.out.println("====================================");
+
+        counts = new int[9];
+        for (int i = 0; i < testTimes; i++) {
+            counts[fun05()]++;
+        }
+
+        for (int i = 0; i < counts.length; i++) {
             System.out.println(i + "这个数, 出现了" + counts[i] + "次");
         }
     }

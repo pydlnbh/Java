@@ -39,6 +39,45 @@ public class Code01_BSExist {
         return false;
     }
 
+    public static boolean findDemo01(int[] arr, int num) {
+        if (arr == null || arr.length == 0) {
+            return false;
+        }
+        int left = 0;
+        int right = arr.length - 1;
+        while (left <= right) {
+            int mid = left + ((right - left) >> 1);
+            if (arr[mid] == num) {
+                return true;
+            } else if (arr[mid] < num) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return false;
+    }
+
+    public static boolean findDemo02(int[] arr, int num) {
+        if (arr == null || arr.length == 0) {
+            return false;
+        }
+
+        int left = 0;
+        int right = arr.length - 1;
+        while (left <= right) {
+            int mid = left + ((right - left) >> 1);
+            if (arr[mid] == num) {
+                return true;
+            } else if (arr[mid] < num) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return false;
+    }
+
     /**
      * 生成随机数组
      *
@@ -120,7 +159,7 @@ public class Code01_BSExist {
             // 生成随机数
             int value = generateRandomNumber(maxValue);
             // 测试比对
-            if (test(arr, value) != find(arr, value)) {
+            if (test(arr, value) != findDemo02(arr, value)) {
                 // 打印数组和数值
                 printArray(arr, value);
                 // 赋值
