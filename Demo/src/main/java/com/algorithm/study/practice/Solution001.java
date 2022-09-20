@@ -9,7 +9,9 @@ public class Solution001 {
 //        factorialSum(4);
 //        testSort();
 //        testPreSum();
-        testRandom();
+//        testRandom();
+//        testBinarySearchExist();
+        testBinarySearchNearLeft();
     }
 
     /**
@@ -221,7 +223,7 @@ public class Solution001 {
     public static class Random {
 
         public static int f() {
-            return (int) (Math.random() * 10) + 6;
+            return (int) (Math.random() * 13) + 4;
         }
 
         // 4 5 6 7 8 9 10 11 12 13 14 15 16
@@ -234,7 +236,7 @@ public class Solution001 {
         }
 
         public static int f02() {
-            return (f01() << 4) + (f01() << 3) + (f01() << 2) + (f01() << 1) + f01();
+            return (f01() << 3) + (f01() << 2) + (f01() << 1) + f01();
         }
 
         public static int f03() {
@@ -254,17 +256,170 @@ public class Solution001 {
             int count = 18;
             int[] arr = new int[count];
             for (int i = 0; i < testTimes; i++) {
-                arr[f()]++;
+                arr[g1()]++;
             }
             for (int i = 0; i < count; i++) {
                 System.out.println(i + "出现了" + arr[i]);
             }
+        }
+
+        public int fun() {
+            return Math.random() < 0.83 ? 0 : 1;
+        }
+
+        public int g1() {
+            int ans = 0;
+            do {
+                ans = fun();
+            } while (ans == fun());
+            return ans;
         }
     }
 
     public static void testRandom() {
         Random random = new Random();
         random.test();
+    }
+
+    public static boolean binarySearchExist(int[] arr, int num) {
+        if (arr == null || arr.length == 0) {
+            return false;
+        }
+
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left <= right) {
+            int mid = left + ((right - left) >> 1);
+            if (arr[mid] == num) {
+                return true;
+            } else if (arr[mid] < num) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return false;
+    }
+
+    public static boolean testBS(int[] arr, int num) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == num) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void printArrayAndNum(int[] arr, int num) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+        System.out.println("要查找的数字：" + num);
+    }
+
+    public static int binarySearchNearLeft(int[] arr, int num) {
+        int index = -1;
+        if (arr == null || arr.length == 0) {
+            return index;
+        }
+
+        int left = 0;
+        int right = arr.length - 1;
+        while (left <= right) {
+            int mid = left + ((right - left) >> 1);
+            if (arr[mid] >= num) {
+                index = mid;
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return index;
+    }
+
+    public static int binarySearchNearRight(int[] arr, int num) {
+        int index = -1;
+        if (arr == null || arr.length == 0) {
+            return index;
+        }
+
+        int left = 0;
+        int right = arr.length - 1;
+        while (left <= right) {
+            int mid = left + ((right - left) >> 1);
+            if (arr[mid] <= num) {
+                left = mid + 1;
+                index = mid;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return index;
+    }
+
+    public static void testBinarySearchExist() {
+        int testTimes = 10000;
+        int maxSize = 100;
+        int maxValue = 100;
+        boolean succeed = true;
+
+        for (int i = 0; i < testTimes; i++) {
+            int[] arr = generateRandomArray(maxSize, maxValue);
+            Arrays.sort(arr);
+            int num = (int) (Math.random() * maxValue) - (int) (Math.random() * maxValue);
+            if (testBS(arr, num) != binarySearchExist(arr, num)) {
+                printArrayAndNum(arr, num);
+                succeed = false;
+                break;
+            }
+        }
+        System.out.println(succeed ? "yes" : "no");
+    }
+
+    public static void testBinarySearchNearLeft() {
+        int[] arr = {1, 1, 2, 2, 3, 3, 3, 4, 4, 5, 5, 6, 6, 6, 7, 7, 8, 8, 9, 10};
+        int left = binarySearchNearLeft(arr, 6);
+        int right = binarySearchNearRight(arr, 6);
+        System.out.println(left);
+        System.out.println(right);
+    }
+
+    public static int bsMinimum(int[] arr) {
+        int index = -1;
+        if (arr == null || arr.length == 0) {
+            return index;
+        }
+
+        int length = arr.length;
+        if (arr.length == 1) {
+            return 0;
+        }
+
+        if (arr[0] < arr[1]) {
+            return 0;
+        }
+
+        if (arr[length - 1] < arr[length - 2]) {
+            return length - 1;
+        }
+
+        int left = 0;
+        int right = length - 1;
+        while (left < right - 1) {
+            int mid = left + ((right - left) >> 1);
+            if (arr[mid] < arr[mid - 1] && arr[mid] < arr[mid + 1]) {
+                return mid;
+            } else {
+                if (arr[mid] > arr[mid - 1]) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+            }
+        }
+        return index;
     }
 
 }
