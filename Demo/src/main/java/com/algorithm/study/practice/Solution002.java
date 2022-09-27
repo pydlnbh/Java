@@ -938,7 +938,7 @@ public class Solution002 {
     }
 
     public static Node mergeTwoList(Node head1, Node head2) {
-        if ((head1 != null && head2 == null) || (head1 == null && head1 != null)) {
+        if (head1 == null || head2 == null) {
             return head1 == null ? head2 : head1;
         }
         Node head = head1.value <= head2.value ? head1 : head2;
