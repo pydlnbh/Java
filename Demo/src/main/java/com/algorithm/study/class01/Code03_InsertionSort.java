@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class Code03_InsertionSort {
 
     // 插入排序
-    public static void InsertionSort(int[] arr) {
+    public static void insertionSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
         }
@@ -104,7 +104,7 @@ public class Code03_InsertionSort {
             int[] res = copyArray(arr);
 
             // 排序
-            InsertionSort(arr);
+            insertionSort002(arr);
             comparator(res);
 
             if (!isEqual(arr, res)) {
@@ -118,9 +118,37 @@ public class Code03_InsertionSort {
         System.out.println(succeed ? "Nice!" : "Fucking fucked");
 
         // 打印
-        int[] arr = generateRandomArray(maxSize, maxValue);
-        InsertionSort(arr);
-        printArray(arr);
+//        int[] arr = generateRandomArray(maxSize, maxValue);
+//        insertionSort(arr);
+//        printArray(arr);
+    }
+
+    public static void insertionSort001(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                }
+            }
+        }
+    }
+
+    public static void insertionSort002(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                }
+            }
+        }
     }
 
 }

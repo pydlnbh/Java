@@ -9,7 +9,7 @@ package com.se.oop.entity;
 public class Student {
     private int sNO;
     private String sName;
-    private char sSex;
+    private String sSex;
     private int sAge;
     private int sJava;
 
@@ -17,7 +17,7 @@ public class Student {
 
     }
 
-    public Student(int sNO, String sName, char sSex, int sAge, int sJava) {
+    public Student(int sNO, String sName, String sSex, int sAge, int sJava) {
         this.sNO  = sNO;
         this.sName  = sName;
         this.sSex  = sSex;

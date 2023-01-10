@@ -17,7 +17,7 @@ public class Code04_NumExist {
 
         int L = 0;
         int R = sortedArr.length - 1;
-        int mid = 0;
+        int mid;
 
         while (L < R) {
             mid = L + ((R - L) >> 1);
@@ -59,12 +59,35 @@ public class Code04_NumExist {
             int[] arr = generateRandomArray(maxSize, maxValue);
             Arrays.sort(arr);
             int value = (int) ((maxValue + 1) * Math.random()) - (int) (maxValue * Math.random());
-            if (test(arr, value) != exist(arr, value)) {
+            if (test(arr, value) != exist001(arr, value)) {
                 succeed = false;
                 break;
             }
         }
 
         System.out.println(succeed ? "Yes!" : "No!");
+    }
+
+    public static boolean exist001(int[] arr, int num) {
+        if (arr == null || arr.length == 0) {
+            return false;
+        }
+
+        int left = 0;
+        int right = arr.length - 1;
+        int mid;
+
+        while (left < right) {
+            mid = left + ((right - left) >> 1);
+            if (arr[mid] == num) {
+                return true;
+            } else if (arr[mid] > num) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return arr[left] == num;
     }
 }

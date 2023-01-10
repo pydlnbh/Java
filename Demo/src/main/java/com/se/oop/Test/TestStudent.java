@@ -10,7 +10,7 @@ import com.se.oop.entity.Student;
  */
 public class TestStudent {
     public static void main(String[] args) {
-        Student student = new Student(001, "zs", '男', 21, 88);
+        Student student = new Student(1, "zs", "男", 21, 88);
         int i = student.getsNo();
         String name = student.getName();
         System.out.println("no is " + i + ", name is " + name);
