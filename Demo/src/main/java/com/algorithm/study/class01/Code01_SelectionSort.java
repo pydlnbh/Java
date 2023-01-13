@@ -105,7 +105,7 @@ public class Code01_SelectionSort {
             int[] arr2 = copyArray(arr1);
 
             // 排序
-            selectionSort005(arr1);
+            selectionSort007(arr1);
             comparator(arr2);
 
             if (!isEqual(arr1, arr2)) {
@@ -196,6 +196,34 @@ public class Code01_SelectionSort {
                 index = arr[j] < arr[index] ? j : index;
             }
             swap(arr, i, index);
+        }
+    }
+
+    public static void selectionSort006(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            int index = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                index = arr[j] < arr[index] ? j : index;
+            }
+            swap(arr, i, index);
+        }
+    }
+
+    public static void selectionSort007(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            int index = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                index = arr[j] < arr[index] ? j : index;
+            }
+            swap(arr, index, i);
         }
     }
 

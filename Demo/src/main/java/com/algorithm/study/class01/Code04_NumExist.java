@@ -59,7 +59,7 @@ public class Code04_NumExist {
             int[] arr = generateRandomArray(maxSize, maxValue);
             Arrays.sort(arr);
             int value = (int) ((maxValue + 1) * Math.random()) - (int) (maxValue * Math.random());
-            if (test(arr, value) != exist001(arr, value)) {
+            if (test(arr, value) != exist003(arr, value)) {
                 succeed = false;
                 break;
             }
@@ -69,6 +69,52 @@ public class Code04_NumExist {
     }
 
     public static boolean exist001(int[] arr, int num) {
+        if (arr == null || arr.length == 0) {
+            return false;
+        }
+
+        int left = 0;
+        int right = arr.length - 1;
+        int mid;
+
+        while (left < right) {
+            mid = left + ((right - left) >> 1);
+            if (arr[mid] == num) {
+                return true;
+            } else if (arr[mid] > num) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return arr[left] == num;
+    }
+
+    public static boolean exist002(int[] arr, int num) {
+        if (arr == null || arr.length == 0) {
+            return false;
+        }
+
+        int left = 0;
+        int right = arr.length - 1;
+        int mid;
+
+        while (left < right) {
+            mid = left + ((right - left) >> 1);
+            if (arr[mid] == num) {
+                return true;
+            } else if (arr[mid] > num) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return arr[left] == num;
+    }
+
+    public static boolean exist003(int[] arr, int num) {
         if (arr == null || arr.length == 0) {
             return false;
         }

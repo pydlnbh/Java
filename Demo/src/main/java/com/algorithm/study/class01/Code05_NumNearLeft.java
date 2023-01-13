@@ -50,8 +50,8 @@ public class Code05_NumNearLeft {
             return;
         }
 
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
+        for (int j : arr) {
+            System.out.print(j + " ");
         }
         System.out.println();
     }
@@ -67,11 +67,11 @@ public class Code05_NumNearLeft {
             int[] arr = generateRandomArray(maxSize, maxValue);
             Arrays.sort(arr);
             int value = (int) ((maxValue + 1) * Math.random()) - (int) (maxValue * Math.random());
-            if (test(arr, value) != nearestIndex(arr, value)) {
+            if (test(arr, value) != nearLeft001(arr, value)) {
                 printArray(arr);
                 System.out.println(value);
                 System.out.println(test(arr, value));
-                System.out.println(nearestIndex(arr, value));
+                System.out.println(nearLeft001(arr, value));
                 succeed = false;
                 break;
             }
@@ -79,4 +79,24 @@ public class Code05_NumNearLeft {
 
         System.out.println(succeed ? "Yes" : "No");
     }
+
+    public static int nearLeft001(int[] arr, int num) {
+        int result = -1;
+        int left = 0;
+        int right = arr.length - 1;
+        int mid;
+
+        while (left <= right) {
+            mid = left + ((right - left) >> 1);
+            if (arr[mid] >= num) {
+                result = mid;
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return result;
+    }
+
 }

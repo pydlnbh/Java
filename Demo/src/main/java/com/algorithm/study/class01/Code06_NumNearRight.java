@@ -68,7 +68,7 @@ public class Code06_NumNearRight {
             Arrays.sort(arr);
             int value = (int) ((maxValue + 1) * Math.random()) - (int) (maxValue * Math.random());
 
-            if (test(arr, value) != nearestIndex(arr, value)) {
+            if (test(arr, value) != nearRight001(arr, value)) {
                 printArray(arr);
                 System.out.println(value);
                 System.out.println(test(arr, value));
@@ -79,5 +79,24 @@ public class Code06_NumNearRight {
         }
 
         System.out.println(succeed ? "yes" : "no");
+    }
+
+    public static int nearRight001(int[] arr, int num) {
+        int result = -1;
+        int left = 0;
+        int right = arr.length - 1;
+        int mid;
+
+        while (left <= right) {
+            mid = left + ((right - left) >> 1);
+            if (arr[mid] <= num) {
+                result = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return result;
     }
 }

@@ -65,6 +65,36 @@ public class Code07_NumAwesome {
         return left;
     }
 
+    public static int getLessIndex002(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return -1;
+        }
+
+        if (arr.length == 1 || arr[0] < arr[1]) {
+            return 0;
+        }
+
+        if (arr[arr.length - 1] < arr[arr.length - 2]) {
+            return arr.length - 1;
+        }
+
+        int left = 1;
+        int right = arr.length - 2;
+
+        while (left < right) {
+            int mid = left + ((right - left) >> 1);
+            if (arr[mid] > arr[mid + 1]) {
+                left = mid + 1;
+            } else if (arr[mid] > arr[mid - 1]) {
+                right = mid - 1;
+            } else {
+                return mid;
+            }
+        }
+
+        return left;
+    }
+
     /**
      * 生成一个随机数组(无序, 相邻不相等)
      *
@@ -144,7 +174,7 @@ public class Code07_NumAwesome {
             int[] arr = generateRandomArray(maxValue, maxLength);
             // 找到局部最小值下标
 //            int res = find(arr);
-            res = getLessIndex(arr);
+            res = getLessIndex002(arr);
             //
             if (!check(arr, res)) {
                 // 打印
