@@ -81,7 +81,12 @@ public class Code05_NumNearLeft {
     }
 
     public static int nearLeft001(int[] arr, int num) {
-        int result = -1;
+        int index = -1;
+
+        if (arr == null || arr.length == 0) {
+            return index;
+        }
+
         int left = 0;
         int right = arr.length - 1;
         int mid;
@@ -89,14 +94,14 @@ public class Code05_NumNearLeft {
         while (left <= right) {
             mid = left + ((right - left) >> 1);
             if (arr[mid] >= num) {
-                result = mid;
+                index = mid;
                 right = mid - 1;
             } else {
                 left = mid + 1;
             }
         }
 
-        return result;
+        return index;
     }
 
 }

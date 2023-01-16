@@ -107,7 +107,7 @@ public class Code02_BubbleSort {
             int[] res = copyArray(arr);
 
             // 排序
-            bubbleSort006(arr);
+            bubbleSort001(arr);
             comparator(res);
 
             if (!isEqual(arr, res)) {
@@ -119,84 +119,9 @@ public class Code02_BubbleSort {
         }
 
         System.out.println(succeed ? "Nice!" : "Fucking fucked");
-
-        // 打印
-//        int[] arr = generateRandomArray(maxSize, maxValue);
-//        bubbleSort(arr);
-//        printArray(arr);
     }
 
     public static void bubbleSort001(int[] arr) {
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-
-        for (int i = arr.length - 1; i >= 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    swap(arr, j, j + 1);
-                }
-            }
-        }
-    }
-
-    public static void bubbleSort002(int[] arr) {
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-
-        for (int i = arr.length - 1; i >= 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    swap(arr, j, j + 1);
-                }
-            }
-        }
-    }
-
-    public static void bubbleSort003(int[] arr) {
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-
-        for (int i = arr.length - 1; i >= 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    swap(arr, j, j + 1);
-                }
-            }
-        }
-    }
-
-    public static void bubbleSort004(int[] arr) {
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-
-        for (int i = arr.length - 1; i >= 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    swap(arr, j, j + 1);
-                }
-            }
-        }
-    }
-
-    public static void bubbleSort005(int[] arr) {
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-
-        for (int i = arr.length - 1; i >= 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    swap(arr, j, j + 1);
-                }
-            }
-        }
-    }
-
-    public static void bubbleSort006(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
         }

@@ -105,7 +105,7 @@ public class Code01_SelectionSort {
             int[] arr2 = copyArray(arr1);
 
             // 排序
-            selectionSort007(arr1);
+            selectionSort001(arr1);
             comparator(arr2);
 
             if (!isEqual(arr1, arr2)) {
@@ -117,12 +117,6 @@ public class Code01_SelectionSort {
         }
 
         System.out.println(succeed ? "Nice!" : "Fucking fucked!");
-
-        // 打印
-        //        int[] arr = generateRandomArray(maxSize, maxValue);
-        //        printArray(arr);
-        //        selectionSort(arr);
-        //        printArray(arr);
     }
 
     public static void selectionSort001(int[] arr) {
@@ -133,97 +127,9 @@ public class Code01_SelectionSort {
         for (int i = 0; i < arr.length; i++) {
             int index = i;
             for (int j = i + 1; j < arr.length; j++) {
-                if (arr[index] > arr[j]) {
-                    index = j;
-                }
-            }
-            swap(arr, i, index);
-        }
-    }
-
-    public static void selectionSort002(int[] arr) {
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-
-        for (int i = 0; i < arr.length; i++) {
-            int index = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[index] > arr[j]) {
-                    index = j;
-                }
-            }
-            swap(arr, i, index);
-        }
-    }
-
-    public static void selectionSort003(int[] arr) {
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-
-        for (int i = 0; i < arr.length; i++) {
-            int index = i;
-            for (int j = i + 1; j < arr.length; j++) {
                 index = arr[j] < arr[index] ? j : index;
             }
             swap(arr, i, index);
-        }
-    }
-
-    public static void selectionSort004(int[] arr) {
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-
-        for (int i = 0; i < arr.length; i++) {
-            int index = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                index = arr[j] < arr[index] ? j : index;
-            }
-            swap(arr, i, index);
-        }
-    }
-
-    public static void selectionSort005(int[] arr) {
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-
-        for (int i = 0; i < arr.length; i++) {
-            int index = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                index = arr[j] < arr[index] ? j : index;
-            }
-            swap(arr, i, index);
-        }
-    }
-
-    public static void selectionSort006(int[] arr) {
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-
-        for (int i = 0; i < arr.length; i++) {
-            int index = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                index = arr[j] < arr[index] ? j : index;
-            }
-            swap(arr, i, index);
-        }
-    }
-
-    public static void selectionSort007(int[] arr) {
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-
-        for (int i = 0; i < arr.length; i++) {
-            int index = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                index = arr[j] < arr[index] ? j : index;
-            }
-            swap(arr, index, i);
         }
     }
 
