@@ -12,7 +12,7 @@ public class Code07_NumAwesome {
      *
      * @param arr
      * */
-    public static int getLessIndex00(int[] arr) {
+    public static int getLessIndex(int[] arr) {
         if (arr == null || arr.length == 0) {
             return -1;
         }
@@ -45,7 +45,7 @@ public class Code07_NumAwesome {
         return arr[left] < arr[right] ? left : right;
     }
 
-    public static int getLessIndex(int[] arr) {
+    public static int getLessIndex001(int[] arr) {
         if (arr == null || arr.length == 0) {
             return -1; // no exist
         }
@@ -70,6 +70,41 @@ public class Code07_NumAwesome {
             }
         }
         return left;
+    }
+
+    public static int getLessIndex002(int[] arr) {
+        int index = -1;
+
+        if (arr == null || arr.length == 0) {
+            return index;
+        }
+
+        if (arr.length == 1 || arr[0] < arr[1]) {
+            return 0;
+        }
+
+        if (arr[arr.length - 1] < arr[arr.length - 2]) {
+            return arr.length - 1;
+        }
+
+        int left = 1;
+        int right = arr.length - 2;
+        int mid;
+
+        while (left < right - 1) {
+            mid = left + ((right - left) >> 1);
+            if (arr[mid] < arr[mid - 1] && arr[mid] < arr[mid + 1]) {
+                return mid;
+            } else {
+                if (arr[mid] > arr[mid + 1]) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+        }
+
+        return arr[left] < arr[right] ? left : right;
     }
 
     /**
@@ -151,7 +186,7 @@ public class Code07_NumAwesome {
             int[] arr = generateRandomArray(maxValue, maxLength);
             // 找到局部最小值下标
 //            int res = find(arr);
-            res = getLessIndex00(arr);
+            res = getLessIndex002(arr);
             //
             if (!check(arr, res)) {
                 // 打印

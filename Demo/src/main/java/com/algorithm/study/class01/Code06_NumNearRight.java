@@ -83,6 +83,7 @@ public class Code06_NumNearRight {
 
     public static int nearRight001(int[] arr, int num) {
         int index = -1;
+
         if (arr == null || arr.length == 0) {
             return index;
         }
