@@ -42,7 +42,7 @@ public class Code02_EvenTimeOddTime {
     }
 
     /**
-     * arr中, 把一个int类型的数, 提取出最右侧的1
+     * 计算一个数字二进制形式有几个1
      *
      * @param N
      * */
