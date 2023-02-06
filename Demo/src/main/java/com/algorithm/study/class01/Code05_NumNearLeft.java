@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * 在一有序数组中, 找>=某个数最左侧的位置
  *
- * @author James
+ * @author peiyiding
  * */
 public class Code05_NumNearLeft {
 
@@ -80,20 +80,27 @@ public class Code05_NumNearLeft {
         System.out.println(succeed ? "Yes" : "No");
     }
 
+    /**
+     * 找到>=num最左边下表的数
+     *
+     * @param arr 有序数组
+     * @param num 对比数字
+     * @return int 下标
+     */
     public static int nearLeft001(int[] arr, int num) {
-        int index = -1;
-
-        if (arr == null || arr.length == 0) {
-            return index;
+        if (null == arr ||
+            0 == arr.length) {
+            return -1;
         }
 
+        int index = -1;
         int left = 0;
         int right = arr.length - 1;
         int mid;
 
         while (left <= right) {
             mid = left + ((right - left) >> 1);
-            if (arr[mid] >= num) {
+            if (num <= arr[mid]) {
                 index = mid;
                 right = mid - 1;
             } else {

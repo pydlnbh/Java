@@ -55,11 +55,24 @@ public class Code01_Swap {
         printArray(arr);
 
         try {
-            swap(arr, i, i + 1);
+            swap001(arr, i, i + 1);
         } catch (Exception e) {
             System.out.println(i);
         }
         System.out.println(i + ", " + arr[i]);
         System.out.println(i + 1 + ", " + arr[i + 1]);
+    }
+
+    /**
+     * 交换函数
+     *
+     * @param arr 数组
+     * @param i 下标1
+     * @param j 下标2
+     */
+    public static void swap001(int[] arr, int i, int j) {
+        arr[i] = arr[i] ^ arr[j];
+        arr[j] = arr[i] ^ arr[j];
+        arr[i] = arr[i] ^ arr[j];
     }
 }

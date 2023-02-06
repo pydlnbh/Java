@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * 选择排序
  *
- * @author James
+ * @author peiyiding
  */
 public class Code01_SelectionSort {
 
@@ -119,17 +119,23 @@ public class Code01_SelectionSort {
         System.out.println(succeed ? "Nice!" : "Fucking fucked!");
     }
 
+    /**
+     * 选择排序
+     *
+     * @param arr 无序数组
+     */
     public static void selectionSort001(int[] arr) {
-        if (arr == null || arr.length < 2) {
+        if (null == arr ||
+            arr.length < 2) {
             return;
         }
 
         for (int i = 0; i < arr.length; i++) {
-            int index = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                index = arr[j] < arr[index] ? j : index;
+            int minIndex = i;
+            for (int j = i; j < arr.length; j++) {
+                minIndex = arr[minIndex] > arr[j] ? j : minIndex;
             }
-            swap(arr, i, index);
+            swap(arr, minIndex, i);
         }
     }
 

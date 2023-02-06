@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * 冒泡排序
  *
- * @author James
+ * @author peiyiding
  */
 public class Code02_BubbleSort {
 
@@ -121,8 +121,14 @@ public class Code02_BubbleSort {
         System.out.println(succeed ? "Nice!" : "Fucking fucked");
     }
 
+    /**
+     * 冒泡排序
+     *
+     * @param arr 无序数组
+     */
     public static void bubbleSort001(int[] arr) {
-        if (arr == null || arr.length < 2) {
+        if (null == arr ||
+            arr.length < 2) {
             return;
         }
 

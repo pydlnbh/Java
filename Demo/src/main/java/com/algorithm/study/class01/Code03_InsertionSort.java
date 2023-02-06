@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * 插入排序
  *
- * @author James
+ * @author peiyiding
  */
 public class Code03_InsertionSort {
 
@@ -118,8 +118,14 @@ public class Code03_InsertionSort {
         System.out.println(succeed ? "Nice!" : "Fucking fucked");
     }
 
+    /**
+     * 插入排序
+     *
+     * @param arr 无序数组
+     */
     public static void insertionSort001(int[] arr) {
-        if (arr == null || arr.length < 2) {
+        if (null == arr ||
+            arr.length < 2) {
             return;
         }
 
