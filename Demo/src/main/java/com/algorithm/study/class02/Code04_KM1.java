@@ -28,7 +28,7 @@ public class Code04_KM1 {
         int max = 10;
         int range = 200;
         int maxKinds = 20;
-        int testTimes = 5;
+        int testTimes = 10000;
 
         System.out.println("start");
 
@@ -51,7 +51,7 @@ public class Code04_KM1 {
 
             if (ans1 != ans2) {
                 for (int num : arr) {
-                    System.out.print(num + " ");
+                    System.out.print(num + ", ");
                 }
                 System.out.println();
                 System.out.println("testMethod: " + ans1 + ", myMethod: " + ans2);
@@ -156,12 +156,14 @@ public class Code04_KM1 {
     public static int[] generateRandomArray(int maxKinds, int range, int k, int m) {
         int kNum = generateRandomNum(range);
 
+        int times = Math.random() < 0.5 ? k : ((int) (Math.random() * (m - 1)) + 1);
+
         int numKinds = (int) (Math.random() * maxKinds) + 2;
 
-        int[] ans = new int[k + (numKinds - 1) * m];
+        int[] ans = new int[times + (numKinds - 1) * m];
 
         int index = 0;
-        for (; index < k; index++) {
+        for (; index < times; index++) {
             ans[index] = kNum;
         }
 
