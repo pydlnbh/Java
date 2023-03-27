@@ -126,7 +126,7 @@ public class Code02_RandToRand {
      * @return double
      */
     public static double xToXPower2() {
-        return Math.min(Math.random(), Math.random());
+        return Math.max(Math.random(), Math.random());
     }
 
     public static int f1() {
@@ -327,5 +327,17 @@ public class Code02_RandToRand {
         for (int i = 0; i < counts.length; i++) {
             System.out.println(i + "这个数, 出现了" + counts[i] + "次");
         }
+
+        System.out.println("====================================");
+
+        count = 0;
+        for (int i = 0; i < testTimes; i++) {
+            if (xToXPower2() < 0.5) {
+                count++;
+            }
+        }
+
+        System.out.println((double) count / (double) testTimes);
+        System.out.println(Math.pow(0.5, 2));
     }
 }
