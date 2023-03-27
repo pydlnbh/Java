@@ -34,9 +34,9 @@ public class Code02_BalanceBinaryTree {
 
         Info left = process(root.left);
         Info right = process(root.right);
-        boolean isBanlance = left.isBanlance && right.isBanlance && Math.abs(left.height - right.height) < 2;
+        boolean isBalance = left.isBanlance && right.isBanlance && Math.abs(left.height - right.height) < 2;
         int height = Math.max(left.height, right.height) + 1;
-        return new Info(isBanlance, height);
+        return new Info(isBalance, height);
     }
 
     public static void main(String[] args) {
