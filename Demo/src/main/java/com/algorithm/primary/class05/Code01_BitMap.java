@@ -19,7 +19,7 @@ public class Code01_BitMap {
             bits[num >> 6] &= ~(1L << (num & 63));
         }
 
-        public boolean contails(int num) {
+        public boolean contains(int num) {
             return (bits[num >> 6] & (1L << (num & 63))) != 0;
         }
     }
@@ -40,14 +40,14 @@ public class Code01_BitMap {
                 bitMap.delete(num);
                 set.remove(num);
             } else {
-                if (bitMap.contails(num) != set.contains(num)) {
+                if (bitMap.contains(num) != set.contains(num)) {
                     System.out.println("Oops1!");
                     break;
                 }
             }
         }
         for (int i = 0; i <= max; i++) {
-            if (bitMap.contails(i) != set.contains(i)) {
+            if (bitMap.contains(i) != set.contains(i)) {
                 System.out.println("Oops2!");
                 break;
             }
